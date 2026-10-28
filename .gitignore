@@ -1,0 +1,5 @@
+__pycache__/
+.venv/
+*.patch.tmp
+solutions/
+*.tar.gz

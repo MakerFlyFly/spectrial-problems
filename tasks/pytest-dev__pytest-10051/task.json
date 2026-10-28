@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "task_id": "pytest-dev__pytest-10051",
+  "task_version": "1.0.0",
+  "title": "修复日志清空后的状态不一致",
+  "summary": "跟踪 Pytest 日志捕获中的对象关系，修复清空记录后读取结果不同步的问题。",
+  "repo": "pytest-dev/pytest",
+  "base_commit": "aa55975c7d3f6c9f6d7f68accc41bb7cadf0eb9a",
+  "kind": "bugfix",
+  "difficulty": "进阶",
+  "tags": [
+    "Python",
+    "Pytest",
+    "日志与状态"
+  ],
+  "estimated_minutes": 35,
+  "allowed_paths": [
+    "src/_pytest/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "pytest-dev__pytest-10051",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-10051@sha256:e38365e835d4ba57f3e7331778894f51ac20bf6c5893827065da8657525e123f",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-pytest-v1",
+    "parser_version": "swebench-02e7a74-pytest-v1"
+  },
+  "log_parser": "parse_log_pytest",
+  "fail_to_pass": [
+    "testing/logging/test_fixture.py::test_clear_for_call_stage"
+  ],
+  "pass_to_pass": [
+    "testing/logging/test_fixture.py::test_change_level",
+    "testing/logging/test_fixture.py::test_with_statement",
+    "testing/logging/test_fixture.py::test_log_access",
+    "testing/logging/test_fixture.py::test_messages",
+    "testing/logging/test_fixture.py::test_record_tuples",
+    "testing/logging/test_fixture.py::test_unicode",
+    "testing/logging/test_fixture.py::test_clear",
+    "testing/logging/test_fixture.py::test_caplog_captures_for_all_stages",
+    "testing/logging/test_fixture.py::test_fixture_help",
+    "testing/logging/test_fixture.py::test_change_level_undo",
+    "testing/logging/test_fixture.py::test_change_level_undos_handler_level",
+    "testing/logging/test_fixture.py::test_ini_controls_global_log_level",
+    "testing/logging/test_fixture.py::test_caplog_can_override_global_log_level",
+    "testing/logging/test_fixture.py::test_caplog_captures_despite_exception",
+    "testing/logging/test_fixture.py::test_log_report_captures_according_to_config_option_upon_failure"
+  ],
+  "guide": {
+    "overview": "跟踪 Pytest 日志捕获中的对象关系，修复清空记录后读取结果不同步的问题。",
+    "entry_points": [
+      "src/_pytest/logging.py",
+      "testing/logging/test_fixture.py"
+    ],
+    "steps": [
+      "先复现原始报告，确认预期行为与实际行为的差异。",
+      "从入口文件追踪数据流，让 AI 帮助解释调用关系，并自行验证判断。",
+      "修改指定源代码目录，在本地运行相关测试与回归测试。",
+      "导出相对固定基线的补丁，上传平台查看完整评测结果。"
+    ],
+    "setup": [
+      "git clone https://github.com/pytest-dev/pytest.git pytest-dev__pytest-10051",
+      "cd pytest-dev__pytest-10051",
+      "git checkout -b spectrial-work aa55975c7d3f6c9f6d7f68accc41bb7cadf0eb9a"
+    ],
+    "local_test": "使用固定镜像进入开发环境，应用题包内 test.patch，再按照 eval.sh 的测试命令运行。导出时仅包含指定源代码目录。"
+  },
+  "assets": {
+    "problem.md": "2dba823bc7a4b4055c67db909fbf7a85cc1fc2bf9785c54d8d83d37bee0a3377",
+    "eval.sh": "1e8c906946b43d963fe5977bbeed36629a58f772f33b982a27fd70b886d95be6",
+    "test.patch": "c25a4ee0d66c1dc4c219f3bd54a0f9b7a9d96513d2d3a42cecb050b7182f3557",
+    "repo-license.txt": "ca836a5f9ecca3b2f350230faa20a48fb8b145653b5568d784862df864706b9b"
+  }
+}

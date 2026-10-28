@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "task_id": "pallets__flask-5014",
+  "task_version": "1.0.0",
+  "title": "为 Blueprint 增加空名称校验",
+  "summary": "沿着蓝图的初始化与注册流程，修复空名称引起的异常行为。",
+  "repo": "pallets/flask",
+  "base_commit": "7ee9ceb71e868944a46e1ff00b506772a53a4f1d",
+  "kind": "bugfix",
+  "difficulty": "入门",
+  "tags": [
+    "Python",
+    "Flask",
+    "输入校验"
+  ],
+  "estimated_minutes": 20,
+  "allowed_paths": [
+    "src/flask/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "pallets__flask-5014",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.pallets_1776_flask-5014@sha256:bde4fbdafa36141d4396944da88ec37aabdef612ed36920090675bccd0ca5d72",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-pytest-v1",
+    "parser_version": "swebench-02e7a74-pytest-v1"
+  },
+  "log_parser": "parse_log_flask",
+  "fail_to_pass": [
+    "tests/test_blueprints.py::test_empty_name_not_allowed"
+  ],
+  "pass_to_pass": [
+    "tests/test_blueprints.py::test_blueprint_specific_error_handling",
+    "tests/test_blueprints.py::test_blueprint_specific_user_error_handling",
+    "tests/test_blueprints.py::test_blueprint_app_error_handling",
+    "tests/test_blueprints.py::test_blueprint_prefix_slash[-/-/]",
+    "tests/test_blueprints.py::test_blueprint_prefix_slash[/--/]",
+    "tests/test_blueprints.py::test_blueprint_prefix_slash[/-/-/]",
+    "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo--/foo]",
+    "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo/--/foo/]",
+    "tests/test_blueprints.py::test_blueprint_prefix_slash[-/bar-/bar]",
+    "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo/-/bar-/foo/bar]",
+    "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo/-bar-/foo/bar]",
+    "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo-/bar-/foo/bar]",
+    "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo/-//bar-/foo/bar]",
+    "tests/test_blueprints.py::test_blueprint_prefix_slash[/foo//-/bar-/foo/bar]",
+    "tests/test_blueprints.py::test_blueprint_url_defaults",
+    "tests/test_blueprints.py::test_blueprint_url_processors",
+    "tests/test_blueprints.py::test_templates_and_static",
+    "tests/test_blueprints.py::test_default_static_max_age",
+    "tests/test_blueprints.py::test_templates_list",
+    "tests/test_blueprints.py::test_dotted_name_not_allowed",
+    "tests/test_blueprints.py::test_dotted_names_from_app",
+    "tests/test_blueprints.py::test_empty_url_defaults",
+    "tests/test_blueprints.py::test_route_decorator_custom_endpoint",
+    "tests/test_blueprints.py::test_route_decorator_custom_endpoint_with_dots",
+    "tests/test_blueprints.py::test_endpoint_decorator",
+    "tests/test_blueprints.py::test_template_filter",
+    "tests/test_blueprints.py::test_add_template_filter",
+    "tests/test_blueprints.py::test_template_filter_with_name",
+    "tests/test_blueprints.py::test_add_template_filter_with_name",
+    "tests/test_blueprints.py::test_template_filter_with_template",
+    "tests/test_blueprints.py::test_template_filter_after_route_with_template",
+    "tests/test_blueprints.py::test_add_template_filter_with_template",
+    "tests/test_blueprints.py::test_template_filter_with_name_and_template",
+    "tests/test_blueprints.py::test_add_template_filter_with_name_and_template",
+    "tests/test_blueprints.py::test_template_test",
+    "tests/test_blueprints.py::test_add_template_test",
+    "tests/test_blueprints.py::test_template_test_with_name",
+    "tests/test_blueprints.py::test_add_template_test_with_name",
+    "tests/test_blueprints.py::test_template_test_with_template",
+    "tests/test_blueprints.py::test_template_test_after_route_with_template",
+    "tests/test_blueprints.py::test_add_template_test_with_template",
+    "tests/test_blueprints.py::test_template_test_with_name_and_template",
+    "tests/test_blueprints.py::test_add_template_test_with_name_and_template",
+    "tests/test_blueprints.py::test_context_processing",
+    "tests/test_blueprints.py::test_template_global",
+    "tests/test_blueprints.py::test_request_processing",
+    "tests/test_blueprints.py::test_app_request_processing",
+    "tests/test_blueprints.py::test_app_url_processors",
+    "tests/test_blueprints.py::test_nested_blueprint",
+    "tests/test_blueprints.py::test_nested_callback_order",
+    "tests/test_blueprints.py::test_nesting_url_prefixes[/parent-/child-None-None]",
+    "tests/test_blueprints.py::test_nesting_url_prefixes[/parent-None-None-/child]",
+    "tests/test_blueprints.py::test_nesting_url_prefixes[None-None-/parent-/child]",
+    "tests/test_blueprints.py::test_nesting_url_prefixes[/other-/something-/parent-/child]",
+    "tests/test_blueprints.py::test_nesting_subdomains",
+    "tests/test_blueprints.py::test_child_and_parent_subdomain",
+    "tests/test_blueprints.py::test_unique_blueprint_names",
+    "tests/test_blueprints.py::test_self_registration",
+    "tests/test_blueprints.py::test_blueprint_renaming"
+  ],
+  "guide": {
+    "overview": "沿着蓝图的初始化与注册流程，修复空名称引起的异常行为。",
+    "entry_points": [
+      "src/flask/blueprints.py",
+      "tests/test_blueprints.py"
+    ],
+    "steps": [
+      "先复现原始报告，确认预期行为与实际行为的差异。",
+      "从入口文件追踪数据流，让 AI 帮助解释调用关系，并自行验证判断。",
+      "修改指定源代码目录，在本地运行相关测试与回归测试。",
+      "导出相对固定基线的补丁，上传平台查看完整评测结果。"
+    ],
+    "setup": [
+      "git clone https://github.com/pallets/flask.git pallets__flask-5014",
+      "cd pallets__flask-5014",
+      "git checkout -b spectrial-work 7ee9ceb71e868944a46e1ff00b506772a53a4f1d"
+    ],
+    "local_test": "使用固定镜像进入开发环境，应用题包内 test.patch，再按照 eval.sh 的测试命令运行。导出时仅包含指定源代码目录。"
+  },
+  "assets": {
+    "problem.md": "9634630d4a22c5655a4bfdcc0704bab4d67521546a9aa184f196b716d82b6d28",
+    "eval.sh": "a752d2d3520db71513c263dd476e8da457395a447a346f6b5c18782dc0faf034",
+    "test.patch": "e16f06b260b5169a49397e9d571b5af70317cd23792e1437232fabf718fe8871",
+    "repo-license.txt": "489a8e1108509ed98a37bb983e11e0f7e1d31f0bd8f99a79c8448e7ff37d07ea"
+  }
+}
