@@ -7,7 +7,11 @@ import subprocess
 import tarfile
 import tempfile
 import shlex
+import sys
 from grading import grade
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--task', required=True)
@@ -21,16 +25,22 @@ package = packages[args.task]
 task = json.loads((package / 'task.json').read_text(encoding='utf-8'))
 image = task['environment']['image']
 subprocess.run(['docker', 'pull', image], check=True)
+command = 'git -C /testbed reset --hard ' + shlex.quote(task['base_commit']) + ' && git -C /testbed clean -fd'
+if args.patch.read_bytes().strip():
+    command += ' && git -C /testbed apply /tmp/solution.patch'
+command += ' && bash /tmp/eval.sh'
 cid = subprocess.check_output(['docker', 'create', '--platform', 'linux/amd64', '--network', 'none',
     '--memory', '3g', '--memory-swap', '3g', '--cpus', '2', '--pids-limit', '256',
     '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges',
     '--env', 'PIP_NO_INDEX=1', '--env', 'PIP_NO_BUILD_ISOLATION=1', '--env', 'OPENBLAS_NUM_THREADS=1',
-    '--entrypoint', '/bin/bash', image, '-c', 'git -C /testbed reset --hard ' + shlex.quote(task['base_commit']) + ' && git -C /testbed clean -fd && git -C /testbed apply /tmp/solution.patch && bash /tmp/eval.sh']).decode().strip()
+    '--entrypoint', '/bin/bash', image, '-c', command]).decode().strip()
 try:
     subprocess.run(['docker', 'cp', str(args.patch.resolve()), cid + ':/tmp/solution.patch'], check=True)
     subprocess.run(['docker', 'cp', str((package / 'eval.sh').resolve()), cid + ':/tmp/eval.sh'], check=True)
-    result = subprocess.run(['docker', 'start', '-a', cid], timeout=600, capture_output=True)
-    log = result.stdout.decode('utf-8', errors='replace') + result.stderr.decode('utf-8', errors='replace')
+    # Preserve stream order: the official start/end markers are written to stderr.
+    result = subprocess.run(['docker', 'start', '-a', cid], timeout=600,
+                            stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    log = result.stdout.decode('utf-8', errors='replace')
     print(log)
     report = grade(task, log)
     print(json.dumps(report, ensure_ascii=False, indent=2))

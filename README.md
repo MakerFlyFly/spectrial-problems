@@ -18,6 +18,8 @@
 
 ## 开始练习
 
+本地工具需要 Python 3.10+、Git 和 Docker。题目的历史依赖由固定镜像提供，不要求本地 Python 与旧仓库使用相同版本。
+
 1. 打开 `tasks/TASK_ID/task.json`，按 `guide.setup` 克隆并检出题目基线。
 2. 阅读 `problem.md`、中文入门说明及 `guide.entry_points`，在本地使用熟悉的 IDE 与 AI 工具开发。
 3. 仅修改 `allowed_paths` 中的源代码。新增源文件先执行 `git add`。

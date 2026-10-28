@@ -1,4 +1,6 @@
-# SpecTrial task bank v0.1.0
+# SpecTrial task bank v0.1.1
+
+Fix independent reproduction by preserving the ordering of stdout and stderr (the upstream evaluation markers are emitted on stderr). Empty patches now run the clean baseline, and command-line output consistently uses UTF-8. Task packages and fixed test sets are unchanged from v0.1.0.
 
 Initial reproducible practice set: Flask Blueprint validation, Requests proxy URL parsing, and Pytest captured-log state consistency.
 

@@ -3,6 +3,10 @@ import argparse
 import json
 from pathlib import Path
 import subprocess
+import sys
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--task', required=True)
