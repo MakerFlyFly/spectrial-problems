@@ -31,4 +31,6 @@ SOFTWARE.
 
 ```
 
-The original Flask, Requests, and Pytest code and test changes retain their upstream licenses; the SpecTrial license does not replace them.
+All repository-specific code and test changes retain their upstream licenses as included in each task's repo-license.txt; the SpecTrial license does not replace them.
+
+The v1 pytest adapter is retained for historical packages. The v2 Python parser module is a frozen adaptation of the same upstream commit, using a local status enum and an unused TestSpec annotation. Sphinx packages that include upstream-eval.sh preserve the original script verbatim; eval.sh adds only pytest's -rA reporting option through tox, without changing test selection or assertions.

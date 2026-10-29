@@ -3,11 +3,13 @@
 Upstream: SWE-bench/SWE-bench@02e7a74ffd0b707aab73d203fe87bdc7c76afc8e
 swebench/harness/log_parsers/python.py and harness/grading.py.
 See THIRD_PARTY_NOTICES.md for attribution and license.
-Only the two parser variants required by the curated tasks are supported.
+The v1 adapter remains frozen; v2 dispatches to the pinned upstream Python parsers.
 """
 import re
 
 PARSER_VERSION = 'swebench-02e7a74-pytest-v1'
+PYTHON_V2 = 'swebench-02e7a74-python-v2'
+SUPPORTED_VERSIONS = (PARSER_VERSION, PYTHON_V2)
 STATUSES = ('PASSED', 'FAILED', 'SKIPPED', 'ERROR', 'XFAIL')
 
 
@@ -43,7 +45,20 @@ def grade(manifest: dict, log: str) -> dict:
         log = log.split('>>>>> Start Test Output', 1)[1]
     if '>>>>> End Test Output' in log:
         log = log.split('>>>>> End Test Output', 1)[0]
-    actual = parse_tests(log, manifest['log_parser'])
+    version = manifest.get('environment', {}).get('parser_version', PARSER_VERSION)
+    if version == PARSER_VERSION:
+        actual = parse_tests(log, manifest['log_parser'])
+    elif version == PYTHON_V2:
+        try:
+            from . import _swebench_python_v2 as upstream
+        except ImportError:
+            import _swebench_python_v2 as upstream
+        names = {'parse_log_' + name for name in ('flask','requests','pytest','django','sphinx','pylint','sympy','astropy','matplotlib','seaborn','xarray','scikit')}
+        if manifest['log_parser'] not in names:
+            raise ValueError('Unsupported Python v2 parser')
+        actual = getattr(upstream, manifest['log_parser'])(log, None)
+    else:
+        raise ValueError('Unsupported parser version: ' + str(version))
     tests = []
     for group, key in [('修复测试', 'fail_to_pass'), ('回归测试', 'pass_to_pass')]:
         for name in manifest[key]:
@@ -51,5 +66,5 @@ def grade(manifest: dict, log: str) -> dict:
     passed = sum(test['status'] == 'PASSED' for test in tests)
     resolved = bool(manifest['fail_to_pass']) and passed == len(tests)
     return {'verdict': 'passed' if resolved else 'failed', 'passed': passed, 'total': len(tests),
-            'tests': tests, 'parser_version': PARSER_VERSION,
+            'tests': tests, 'parser_version': version,
             'message': '全部修复测试与回归测试通过。' if resolved else '部分固定测试尚未通过，请查看测试报告。'}

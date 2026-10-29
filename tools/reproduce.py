@@ -16,6 +16,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 parser = argparse.ArgumentParser()
 parser.add_argument('--task', required=True)
 parser.add_argument('--patch', required=True, type=Path)
+parser.add_argument('--runtime', help='Optional Docker runtime, e.g. runsc for the platform sandbox')
 args = parser.parse_args()
 root = Path(__file__).resolve().parents[1]
 packages = {path.parent.name: path.parent for path in (root / 'tasks').glob('*/task.json')}
@@ -25,14 +26,15 @@ package = packages[args.task]
 task = json.loads((package / 'task.json').read_text(encoding='utf-8'))
 image = task['environment']['image']
 subprocess.run(['docker', 'pull', image], check=True)
-command = 'git -C /testbed reset --hard ' + shlex.quote(task['base_commit']) + ' && git -C /testbed clean -fd'
+command = 'git -c safe.directory=/testbed -C /testbed reset --hard ' + shlex.quote(task['base_commit']) + ' && git -c safe.directory=/testbed -C /testbed clean -fd'
 if args.patch.read_bytes().strip():
     command += ' && git -C /testbed apply /tmp/solution.patch'
 command += ' && bash /tmp/eval.sh'
-cid = subprocess.check_output(['docker', 'create', '--platform', 'linux/amd64', '--network', 'none',
+cid = subprocess.check_output(['docker', 'create', *(['--runtime',args.runtime] if args.runtime else []), '--platform', 'linux/amd64', '--network', 'none',
     '--memory', '3g', '--memory-swap', '3g', '--cpus', '2', '--pids-limit', '256',
     '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges',
     '--env', 'PIP_NO_INDEX=1', '--env', 'PIP_NO_BUILD_ISOLATION=1', '--env', 'OPENBLAS_NUM_THREADS=1',
+    '--env', 'OMP_NUM_THREADS=1', '--env', 'PYTHONDONTWRITEBYTECODE=1', '--env', 'PIP_DISABLE_PIP_VERSION_CHECK=1',
     '--entrypoint', '/bin/bash', image, '-c', command]).decode().strip()
 try:
     subprocess.run(['docker', 'cp', str(args.patch.resolve()), cid + ':/tmp/solution.patch'], check=True)
@@ -43,6 +45,8 @@ try:
     log = result.stdout.decode('utf-8', errors='replace')
     print(log)
     report = grade(task, log)
+    if result.returncode in (137,-9):
+        report.update(verdict='resource_limit',message='评测超过资源限制。')
     print(json.dumps(report, ensure_ascii=False, indent=2))
     raise SystemExit(0 if report['verdict'] == 'passed' else 1)
 finally:

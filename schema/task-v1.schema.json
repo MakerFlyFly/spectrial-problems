@@ -4,26 +4,262 @@
   "title": "SpecTrial TaskPackage v1",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "task_id", "task_version", "title", "summary", "repo", "base_commit", "kind", "difficulty", "tags", "estimated_minutes", "allowed_paths", "source", "environment", "log_parser", "fail_to_pass", "pass_to_pass", "guide", "assets"],
+  "required": [
+    "schema_version",
+    "task_id",
+    "task_version",
+    "title",
+    "summary",
+    "repo",
+    "base_commit",
+    "kind",
+    "difficulty",
+    "tags",
+    "estimated_minutes",
+    "allowed_paths",
+    "source",
+    "environment",
+    "log_parser",
+    "fail_to_pass",
+    "pass_to_pass",
+    "guide",
+    "assets"
+  ],
   "properties": {
-    "schema_version": {"const": 1},
-    "task_id": {"type": "string", "pattern": "^[a-zA-Z0-9_-]+$"},
-    "task_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
-    "title": {"type": "string", "minLength": 1},
-    "summary": {"type": "string"},
-    "repo": {"type": "string", "pattern": "^[a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+$"},
-    "base_commit": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
-    "kind": {"enum": ["bugfix", "feature"]},
-    "difficulty": {"enum": ["入门", "进阶", "挑战"]},
-    "tags": {"type": "array", "items": {"type": "string"}},
-    "estimated_minutes": {"type": "integer", "minimum": 1},
-    "allowed_paths": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^(?:[a-zA-Z0-9_-]+/)+$"}},
-    "source": {"type": "object", "required": ["dataset", "revision", "instance_id", "url"], "properties": {"dataset": {"type": "string"}, "revision": {"type": "string", "pattern": "^[a-f0-9]{40}$"}, "instance_id": {"type": "string"}, "url": {"type": "string"}}},
-    "environment": {"type": "object", "required": ["image", "platform", "evaluator", "parser_version"], "properties": {"image": {"type": "string", "pattern": "^[a-zA-Z0-9_./-]+@sha256:[a-f0-9]{64}$"}, "platform": {"const": "linux/amd64"}, "evaluator": {"const": "swebench-pytest-v1"}, "parser_version": {"const": "swebench-02e7a74-pytest-v1"}}},
-    "log_parser": {"enum": ["parse_log_flask", "parse_log_requests", "parse_log_pytest"]},
-    "fail_to_pass": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
-    "pass_to_pass": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
-    "guide": {"type": "object", "required": ["overview", "entry_points", "steps", "setup", "local_test"], "properties": {"overview": {"type": "string"}, "entry_points": {"type": "array", "items": {"type": "string"}}, "steps": {"type": "array", "items": {"type": "string"}}, "setup": {"type": "array", "items": {"type": "string"}}, "local_test": {"type": "string"}}},
-    "assets": {"type": "object", "required": ["eval.sh", "test.patch", "problem.md", "repo-license.txt"], "additionalProperties": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
-  }
+    "schema_version": {
+      "const": 1
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_-]+$"
+    },
+    "task_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string"
+    },
+    "repo": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_.-]+/[a-zA-Z0-9_.-]+$"
+    },
+    "base_commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "kind": {
+      "enum": [
+        "bugfix",
+        "feature"
+      ]
+    },
+    "difficulty": {
+      "enum": [
+        "入门",
+        "进阶",
+        "挑战"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "estimated_minutes": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "allowed_paths": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^(?:[a-zA-Z0-9_-]+/)+$"
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "dataset",
+        "revision",
+        "instance_id",
+        "url"
+      ],
+      "properties": {
+        "dataset": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "instance_id": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "required": [
+        "image",
+        "platform",
+        "evaluator",
+        "parser_version"
+      ],
+      "properties": {
+        "image": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_./-]+@sha256:[a-f0-9]{64}$"
+        },
+        "platform": {
+          "const": "linux/amd64"
+        },
+        "evaluator": {
+          "enum": [
+            "swebench-pytest-v1",
+            "swebench-python-v2"
+          ]
+        },
+        "parser_version": {
+          "enum": [
+            "swebench-02e7a74-pytest-v1",
+            "swebench-02e7a74-python-v2"
+          ]
+        }
+      }
+    },
+    "log_parser": {
+      "enum": [
+        "parse_log_flask",
+        "parse_log_requests",
+        "parse_log_pytest",
+        "parse_log_django",
+        "parse_log_sphinx",
+        "parse_log_pylint",
+        "parse_log_sympy",
+        "parse_log_astropy",
+        "parse_log_matplotlib",
+        "parse_log_seaborn",
+        "parse_log_xarray",
+        "parse_log_scikit"
+      ]
+    },
+    "fail_to_pass": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "pass_to_pass": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "guide": {
+      "type": "object",
+      "required": [
+        "overview",
+        "entry_points",
+        "steps",
+        "setup",
+        "local_test"
+      ],
+      "properties": {
+        "overview": {
+          "type": "string"
+        },
+        "entry_points": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "setup": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "local_test": {
+          "type": "string"
+        }
+      }
+    },
+    "assets": {
+      "type": "object",
+      "required": [
+        "eval.sh",
+        "test.patch",
+        "problem.md",
+        "repo-license.txt"
+      ],
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "environment": {
+            "properties": {
+              "parser_version": {
+                "const": "swebench-02e7a74-pytest-v1"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "log_parser": {
+            "enum": [
+              "parse_log_flask",
+              "parse_log_requests",
+              "parse_log_pytest"
+            ]
+          },
+          "environment": {
+            "properties": {
+              "evaluator": {
+                "const": "swebench-pytest-v1"
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "environment": {
+            "properties": {
+              "evaluator": {
+                "const": "swebench-python-v2"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }
