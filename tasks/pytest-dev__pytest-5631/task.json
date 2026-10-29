@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "task_id": "pytest-dev__pytest-5631",
+  "task_version": "1.0.0",
+  "title": "修复替换数组对象时的测试收集异常",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "pytest-dev/pytest",
+  "base_commit": "cb828ebe70b4fa35cd5f9a7ee024272237eab351",
+  "kind": "bugfix",
+  "difficulty": "进阶",
+  "tags": [
+    "Python",
+    "Pytest",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 55,
+  "allowed_paths": [
+    "src/_pytest/",
+    "_pytest/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "pytest-dev__pytest-5631",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-5631@sha256:c76510e12a1765211e064f6e8de09e51ac0f7839f60d72305b374e004308b6a1",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_pytest",
+  "fail_to_pass": [
+    "testing/python/integration.py::TestMockDecoration::test_mock_sentinel_check_against_numpy_like"
+  ],
+  "pass_to_pass": [
+    "testing/python/integration.py::test_wrapped_getfslineno",
+    "testing/python/integration.py::TestMockDecoration::test_wrapped_getfuncargnames",
+    "testing/python/integration.py::TestMockDecoration::test_getfuncargnames_patching",
+    "testing/python/integration.py::test_pytestconfig_is_session_scoped",
+    "testing/python/integration.py::TestOEJSKITSpecials::test_funcarg_non_pycollectobj",
+    "testing/python/integration.py::TestOEJSKITSpecials::test_autouse_fixture",
+    "testing/python/integration.py::TestMockDecoration::test_unittest_mock",
+    "testing/python/integration.py::TestMockDecoration::test_unittest_mock_and_fixture",
+    "testing/python/integration.py::TestReRunTests::test_rerun",
+    "testing/python/integration.py::TestNoselikeTestAttribute::test_module_with_global_test",
+    "testing/python/integration.py::TestNoselikeTestAttribute::test_class_and_method",
+    "testing/python/integration.py::TestNoselikeTestAttribute::test_unittest_class",
+    "testing/python/integration.py::TestNoselikeTestAttribute::test_class_with_nasty_getattr",
+    "testing/python/integration.py::TestParameterize::test_idfn_marker",
+    "testing/python/integration.py::TestParameterize::test_idfn_fixture"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "src/_pytest/compat.py",
+      "testing/python/integration.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/pytest-dev/pytest.git pytest-dev__pytest-5631",
+      "cd pytest-dev__pytest-5631",
+      "git checkout -b spectrial-work cb828ebe70b4fa35cd5f9a7ee024272237eab351"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "282584dec896a6bf908c6ee6e424bf1de4eba8d27167172510f30f41c9640631",
+    "eval.sh": "e4defa116a80d295904e49635299777a6bcb54d06733b150c254a0efa2d14a21",
+    "test.patch": "f1e134c39e77a5645034eddcfef9e210962a795c517bffcc7bbe6deba3cecb9b",
+    "repo-license.txt": "4be38574daf05665b6194e4fd84c5ef6ce7c3a2810308a5222d5cdffc2d04d18"
+  }
+}

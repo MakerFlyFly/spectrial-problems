@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "task_id": "sphinx-doc__sphinx-8721",
+  "task_version": "1.0.1",
+  "title": "禁用 EPUB 时不再生成源码查看页",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "sphinx-doc/sphinx",
+  "base_commit": "82ef497a8c88f0f6e50d84520e7276bfbf65025d",
+  "kind": "bugfix",
+  "difficulty": "入门",
+  "tags": [
+    "Python",
+    "Sphinx",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 25,
+  "allowed_paths": [
+    "sphinx/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "sphinx-doc__sphinx-8721",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8721@sha256:8f02afdb324767a2e56b7940569ea822cfa58c3c1f0ef9a910162d21cf52c3f5",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_sphinx",
+  "fail_to_pass": [
+    "tests/test_ext_viewcode.py::test_viewcode_epub_default"
+  ],
+  "pass_to_pass": [
+    "tests/test_ext_viewcode.py::test_viewcode_epub_enabled",
+    "tests/test_ext_viewcode.py::test_linkcode",
+    "tests/test_ext_viewcode.py::test_local_source_files"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "sphinx/ext/viewcode.py",
+      "tests/test_ext_viewcode.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/sphinx-doc/sphinx.git sphinx-doc__sphinx-8721",
+      "cd sphinx-doc__sphinx-8721",
+      "git checkout -b spectrial-work 82ef497a8c88f0f6e50d84520e7276bfbf65025d"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "b2c02c41991ac92fa947e217323e8cb2a82d37f19dceccab7f4ce05aa1d2934a",
+    "eval.sh": "fa3c0dd028f9dba1ecbbb9670569aef487300d44fd374b6b9b797fbab950004b",
+    "test.patch": "58f6ddb683f14cee7ab55e9c33a32dd141d2fffb5f8f366d0a3037f214b67227",
+    "repo-license.txt": "058abe6d05d2fd185ed5cbc89d473a4722e43131582c93a040f78c4581f32943",
+    "upstream-eval.sh": "2c1670f7629deb4348311bc713e5e44a40b93ca865abcff9724640c81e5971ff"
+  }
+}

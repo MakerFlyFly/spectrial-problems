@@ -6,23 +6,33 @@
 
 ## 题库
 
-当前 Release 包含 **13 道**已通过基线与两次参考补丁验证的题目。
+当前 Release 包含 **23 道**已通过基线与两次参考补丁验证的题目。
 
 | 题目 | 仓库 | 难度 | 固定测试 |
 | --- | --- | --- | --- |
+| [在正确数据库上重命名内容类型](tasks/django__django-11066/problem.md) | django/django | 入门 | 4 |
 | [避免重复构造 URL 解析器](tasks/django__django-11333/problem.md) | django/django | 进阶 | 3 |
 | [让消息级别标签随配置覆盖更新](tasks/django__django-15127/problem.md) | django/django | 入门 | 2 |
+| [让后台内联表单使用 UUID 默认值](tasks/django__django-16950/problem.md) | django/django | 进阶 | 4 |
 | [为 Blueprint 增加空名称校验](tasks/pallets__flask-5014/problem.md) | pallets/flask | 入门 | 60 |
 | [修复请求中不恰当的 Content-Length](tasks/psf__requests-1142/problem.md) | psf/requests | 入门 | 6 |
 | [修复代理地址中的认证信息解析](tasks/psf__requests-6028/problem.md) | psf/requests | 进阶 | 187 |
+| [让零相似行数阈值关闭重复代码检查](tasks/pylint-dev__pylint-4970/problem.md) | pylint-dev/pylint | 入门 | 18 |
 | [规范短格式详细输出选项的参数](tasks/pylint-dev__pylint-6386/problem.md) | pylint-dev/pylint | 进阶 | 8 |
 | [修复容器中自动选择工作进程数失败](tasks/pylint-dev__pylint-6903/problem.md) | pylint-dev/pylint | 入门 | 9 |
+| [让递归扫描遵循忽略路径配置](tasks/pylint-dev__pylint-7080/problem.md) | pylint-dev/pylint | 进阶 | 121 |
 | [修复日志清空后的状态不一致](tasks/pytest-dev__pytest-10051/problem.md) | pytest-dev/pytest | 进阶 | 16 |
+| [修复替换数组对象时的测试收集异常](tasks/pytest-dev__pytest-5631/problem.md) | pytest-dev/pytest | 进阶 | 16 |
 | [修复 pastebin 功能的语法高亮类型](tasks/pytest-dev__pytest-5809/problem.md) | pytest-dev/pytest | 入门 | 4 |
+| [修复展示字节参数时的 BytesWarning](tasks/pytest-dev__pytest-7205/problem.md) | pytest-dev/pytest | 入门 | 26 |
+| [修复调试模式下跳过测试的清理流程](tasks/pytest-dev__pytest-7236/problem.md) | pytest-dev/pytest | 进阶 | 52 |
 | [在测试结束后恢复 caplog 日志级别](tasks/pytest-dev__pytest-7571/problem.md) | pytest-dev/pytest | 进阶 | 15 |
 | [支持为自动文档指定私有成员名单](tasks/sphinx-doc__sphinx-8035/problem.md) | sphinx-doc/sphinx | 进阶 | 3 |
 | [修复变量的公开成员元数据识别](tasks/sphinx-doc__sphinx-8593/problem.md) | sphinx-doc/sphinx | 进阶 | 3 |
+| [禁用 EPUB 时不再生成源码查看页](tasks/sphinx-doc__sphinx-8721/problem.md) | sphinx-doc/sphinx | 入门 | 4 |
+| [支持向量与零的加法](tasks/sympy__sympy-14711/problem.md) | sympy/sympy | 入门 | 3 |
 | [修复希腊字母下标的 Unicode 排版](tasks/sympy__sympy-20916/problem.md) | sympy/sympy | 入门 | 2 |
+| [修复置换群同态检查](tasks/sympy__sympy-24443/problem.md) | sympy/sympy | 进阶 | 2 |
 
 来源为 [SWE-bench Verified](https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified)，数据 revision 固定为 `78f471bf655a3137b2e8a75af1501690ec009ec3`。每个任务记录原仓库、完整 `base_commit`、容器镜像 digest、来源 ID 与资产摘要。
 

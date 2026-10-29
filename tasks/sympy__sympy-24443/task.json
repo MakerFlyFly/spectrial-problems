@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "task_id": "sympy__sympy-24443",
+  "task_version": "1.0.0",
+  "title": "修复置换群同态检查",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "sympy/sympy",
+  "base_commit": "809c53c077485ca48a206cee78340389cb83b7f1",
+  "kind": "bugfix",
+  "difficulty": "进阶",
+  "tags": [
+    "Python",
+    "Sympy",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 55,
+  "allowed_paths": [
+    "sympy/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "sympy__sympy-24443",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.sympy_1776_sympy-24443@sha256:0d6610c1dd6f38eb68ee0923a74aebc6103fabc063f5cceec45a4cc0cb8a8cd4",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_sympy",
+  "fail_to_pass": [
+    "test_homomorphism"
+  ],
+  "pass_to_pass": [
+    "test_isomorphisms"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "sympy/combinatorics/homomorphisms.py",
+      "sympy/combinatorics/tests/test_homomorphisms.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/sympy/sympy.git sympy__sympy-24443",
+      "cd sympy__sympy-24443",
+      "git checkout -b spectrial-work 809c53c077485ca48a206cee78340389cb83b7f1"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "379d9927a51da568d2fc0b5abfbf663985bc5c79de9ce853b71b4049ac247b25",
+    "eval.sh": "120ccf49de9efefe672b9571427fffb88b8e2dc42af918a07a80f41246e4accf",
+    "test.patch": "85e02a8802c5b7b595023301187b3ef063036c59f5072eb5b478bcded400fd92",
+    "repo-license.txt": "0d753dffbbcb7412bc1ad25e5c5193c9ff7f8c6a3331f3b60761f8dbd744b742"
+  }
+}

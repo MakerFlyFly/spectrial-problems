@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "task_id": "pytest-dev__pytest-7205",
+  "task_version": "1.0.0",
+  "title": "修复展示字节参数时的 BytesWarning",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "pytest-dev/pytest",
+  "base_commit": "5e7f1ab4bf58e473e5d7f878eb2b499d7deabd29",
+  "kind": "bugfix",
+  "difficulty": "入门",
+  "tags": [
+    "Python",
+    "Pytest",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 25,
+  "allowed_paths": [
+    "src/_pytest/",
+    "_pytest/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "pytest-dev__pytest-7205",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-7205@sha256:1c6124cd5254db8831df455575eff2795b0cbeb849d10846388e30e00870e495",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_pytest",
+  "fail_to_pass": [
+    "testing/test_setuponly.py::test_show_fixtures_with_parameters[--setup-only]",
+    "testing/test_setuponly.py::test_show_fixtures_with_parameter_ids[--setup-only]",
+    "testing/test_setuponly.py::test_show_fixtures_with_parameter_ids_function[--setup-only]",
+    "testing/test_setuponly.py::test_show_fixtures_with_parameters[--setup-plan]",
+    "testing/test_setuponly.py::test_show_fixtures_with_parameter_ids[--setup-plan]",
+    "testing/test_setuponly.py::test_show_fixtures_with_parameter_ids_function[--setup-plan]",
+    "testing/test_setuponly.py::test_show_fixtures_with_parameters[--setup-show]",
+    "testing/test_setuponly.py::test_show_fixtures_with_parameter_ids[--setup-show]",
+    "testing/test_setuponly.py::test_show_fixtures_with_parameter_ids_function[--setup-show]",
+    "testing/test_setuponly.py::test_show_fixture_action_with_bytes"
+  ],
+  "pass_to_pass": [
+    "testing/test_setuponly.py::test_show_only_active_fixtures[--setup-only]",
+    "testing/test_setuponly.py::test_show_different_scopes[--setup-only]",
+    "testing/test_setuponly.py::test_show_nested_fixtures[--setup-only]",
+    "testing/test_setuponly.py::test_show_fixtures_with_autouse[--setup-only]",
+    "testing/test_setuponly.py::test_show_only_active_fixtures[--setup-plan]",
+    "testing/test_setuponly.py::test_show_different_scopes[--setup-plan]",
+    "testing/test_setuponly.py::test_show_nested_fixtures[--setup-plan]",
+    "testing/test_setuponly.py::test_show_fixtures_with_autouse[--setup-plan]",
+    "testing/test_setuponly.py::test_show_only_active_fixtures[--setup-show]",
+    "testing/test_setuponly.py::test_show_different_scopes[--setup-show]",
+    "testing/test_setuponly.py::test_show_nested_fixtures[--setup-show]",
+    "testing/test_setuponly.py::test_show_fixtures_with_autouse[--setup-show]",
+    "testing/test_setuponly.py::test_dynamic_fixture_request",
+    "testing/test_setuponly.py::test_capturing",
+    "testing/test_setuponly.py::test_show_fixtures_and_execute_test",
+    "testing/test_setuponly.py::test_setup_show_with_KeyboardInterrupt_in_test"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "src/_pytest/setuponly.py",
+      "testing/test_setuponly.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/pytest-dev/pytest.git pytest-dev__pytest-7205",
+      "cd pytest-dev__pytest-7205",
+      "git checkout -b spectrial-work 5e7f1ab4bf58e473e5d7f878eb2b499d7deabd29"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "308d9cf2d89c2bedbca682207ae16dd7a1203742bd66373bcd5926bcc638f7ce",
+    "eval.sh": "6077c9487949abbf8434973d707154d61548773aca88c1336f2a7af76764e752",
+    "test.patch": "c7bcc2ef1cfc5051c19866d9538d8926f0c972c44c48007087a6eb547b616650",
+    "repo-license.txt": "7898b9b164d4f93fd9a562fd0f592935518b48c4745303964110eb7f7fe64faf"
+  }
+}

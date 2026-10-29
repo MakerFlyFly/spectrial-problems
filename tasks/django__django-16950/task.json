@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "task_id": "django__django-16950",
+  "task_version": "1.0.0",
+  "title": "让后台内联表单使用 UUID 默认值",
+  "summary": "围绕表单中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "django/django",
+  "base_commit": "f64fd47a7627ed6ffe2df2a32ded6ee528a784eb",
+  "kind": "bugfix",
+  "difficulty": "进阶",
+  "tags": [
+    "Python",
+    "Django",
+    "表单"
+  ],
+  "estimated_minutes": 55,
+  "allowed_paths": [
+    "django/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "django__django-16950",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.django_1776_django-16950@sha256:2f226410370995e0d11e181dbb68fb592ec26c0b6bb040727a37453ad3a49a76",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_django",
+  "fail_to_pass": [
+    "If form data is provided, a parent's auto-generated alternate key is"
+  ],
+  "pass_to_pass": [
+    "#24377 - Inlines with a model field default should ignore that default",
+    "#24377 - If we're adding a new object, a parent's auto-generated pk",
+    "#24958 - Variant of test_inlineformset_factory_nulls_default_pks for"
+  ],
+  "guide": {
+    "overview": "围绕表单中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "django/forms/models.py",
+      "tests/model_formsets/test_uuid.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/django/django.git django__django-16950",
+      "cd django__django-16950",
+      "git checkout -b spectrial-work f64fd47a7627ed6ffe2df2a32ded6ee528a784eb"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "f269742c4cfd7938fbc0c71820914948ed127d5ce9750df52c33f7a340b91f34",
+    "eval.sh": "79a405c8cd9a1229ef14657497f6ead2dc81f4692f5ca0a15fcb45bd02f5d2d5",
+    "test.patch": "079f23922da8477b532b835fdb4512d03e68b5fd7480b40790ba673e7536ba9a",
+    "repo-license.txt": "b846415d1b514e9c1dff14a22deb906d794bc546ca6129f950a18cd091e2a669"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "task_id": "sympy__sympy-14711",
+  "task_version": "1.0.0",
+  "title": "支持向量与零的加法",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "sympy/sympy",
+  "base_commit": "c6753448b5c34f95e250105d76709fe4d349ca1f",
+  "kind": "bugfix",
+  "difficulty": "入门",
+  "tags": [
+    "Python",
+    "Sympy",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 25,
+  "allowed_paths": [
+    "sympy/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "sympy__sympy-14711",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.sympy_1776_sympy-14711@sha256:c5366c33ed254ded2f8b39f7350deada09fc6ff5b1fe252041d10844fab54997",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_sympy",
+  "fail_to_pass": [
+    "test_Vector"
+  ],
+  "pass_to_pass": [
+    "test_Vector_diffs",
+    "test_vector_var_in_dcm"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "sympy/physics/vector/vector.py",
+      "sympy/physics/vector/tests/test_vector.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/sympy/sympy.git sympy__sympy-14711",
+      "cd sympy__sympy-14711",
+      "git checkout -b spectrial-work c6753448b5c34f95e250105d76709fe4d349ca1f"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "2040f0884f278a78954414c05c2caedef7411158c41fc2046a6f3d9bac85d64f",
+    "eval.sh": "b6c4351c36c32145b46d63c5cd604e05985515020f975f80aee503259081febe",
+    "test.patch": "955dfb3e264f06cbee6285bcf20d1346b33d3826fc901ddd51a21e823b44bb3d",
+    "repo-license.txt": "3c98bbadf4c3f229dcd4565ba5ac9de649a9db689770e5ad759f9eaeecbe6cd9"
+  }
+}
