@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "task_id": "django__django-11333",
+  "task_version": "1.0.0",
+  "title": "避免重复构造 URL 解析器",
+  "summary": "围绕URL 路由中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "django/django",
+  "base_commit": "55b68de643b5c2d5f0a8ea7587ab3b2966021ccc",
+  "kind": "bugfix",
+  "difficulty": "进阶",
+  "tags": [
+    "Python",
+    "Django",
+    "URL 路由"
+  ],
+  "estimated_minutes": 55,
+  "allowed_paths": [
+    "django/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "django__django-11333",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.django_1776_django-11333@sha256:ac29b993b4361ddb0d77756862f5738f64a1d3332591f09e5a1d222e5dda78c9",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_django",
+  "fail_to_pass": [
+    "test_resolver_cache_default__root_urlconf (urlpatterns.test_resolvers.ResolverCacheTests)"
+  ],
+  "pass_to_pass": [
+    "test_str (urlpatterns.test_resolvers.RegexPatternTests)",
+    "test_str (urlpatterns.test_resolvers.RoutePatternTests)"
+  ],
+  "guide": {
+    "overview": "围绕URL 路由中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "django/urls/base.py",
+      "django/urls/resolvers.py",
+      "tests/urlpatterns/test_resolvers.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/django/django.git django__django-11333",
+      "cd django__django-11333",
+      "git checkout -b spectrial-work 55b68de643b5c2d5f0a8ea7587ab3b2966021ccc"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "46c75805409021e7df849f3ee81081ba222cd9ceac4020e5a956be44df192d5d",
+    "eval.sh": "5252861721b04c91ac37bc71edd59b998c896867e9281fc7a86dd7eef61133dc",
+    "test.patch": "efe44e2052ad75df36c34d1661688b8115e69ec36e538c85d183b58de0923980",
+    "repo-license.txt": "b846415d1b514e9c1dff14a22deb906d794bc546ca6129f950a18cd091e2a669"
+  }
+}

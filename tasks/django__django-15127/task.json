@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "task_id": "django__django-15127",
+  "task_version": "1.0.0",
+  "title": "让消息级别标签随配置覆盖更新",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "django/django",
+  "base_commit": "9a6e2df3a8f01ea761529bec48e5a8dc0ea9575b",
+  "kind": "bugfix",
+  "difficulty": "入门",
+  "tags": [
+    "Python",
+    "Django",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 25,
+  "allowed_paths": [
+    "django/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "django__django-15127",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.django_1776_django-15127@sha256:2fbf01c7457fda0f49eef1e1c035b589ed12432ef307c368aac22af534f15fd4",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_django",
+  "fail_to_pass": [
+    "test_override_settings_level_tags (messages_tests.tests.TestLevelTags)"
+  ],
+  "pass_to_pass": [
+    "test_eq (messages_tests.tests.MessageTests)"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "django/contrib/messages/apps.py",
+      "tests/messages_tests/base.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/django/django.git django__django-15127",
+      "cd django__django-15127",
+      "git checkout -b spectrial-work 9a6e2df3a8f01ea761529bec48e5a8dc0ea9575b"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "c292bb768c1a7f54599f5232bf0ec130db16cae3504ab40183bf07f4ff3f3622",
+    "eval.sh": "a4e0209f1ca55f5b4318e5de69a265664b8cbae3383e1a7a485c6385867337bb",
+    "test.patch": "7fd092521c1177b3b6945a83f1be7b2ceb17ec0ea13d69a50959607a2dd7a434",
+    "repo-license.txt": "b846415d1b514e9c1dff14a22deb906d794bc546ca6129f950a18cd091e2a669"
+  }
+}

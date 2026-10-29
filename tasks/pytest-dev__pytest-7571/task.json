@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "task_id": "pytest-dev__pytest-7571",
+  "task_version": "1.0.0",
+  "title": "在测试结束后恢复 caplog 日志级别",
+  "summary": "围绕日志与状态中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "pytest-dev/pytest",
+  "base_commit": "422685d0bdc110547535036c1ff398b5e1c44145",
+  "kind": "bugfix",
+  "difficulty": "进阶",
+  "tags": [
+    "Python",
+    "Pytest",
+    "日志与状态"
+  ],
+  "estimated_minutes": 55,
+  "allowed_paths": [
+    "src/_pytest/",
+    "_pytest/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "pytest-dev__pytest-7571",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-7571@sha256:0a1f84cd32e2c8332f90bfad6f3fd16304f25c01384adb4ffd4f7250316bd60a",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_pytest",
+  "fail_to_pass": [
+    "testing/logging/test_fixture.py::test_change_level_undos_handler_level"
+  ],
+  "pass_to_pass": [
+    "testing/logging/test_fixture.py::test_change_level",
+    "testing/logging/test_fixture.py::test_with_statement",
+    "testing/logging/test_fixture.py::test_log_access",
+    "testing/logging/test_fixture.py::test_messages",
+    "testing/logging/test_fixture.py::test_record_tuples",
+    "testing/logging/test_fixture.py::test_unicode",
+    "testing/logging/test_fixture.py::test_clear",
+    "testing/logging/test_fixture.py::test_caplog_captures_for_all_stages",
+    "testing/logging/test_fixture.py::test_fixture_help",
+    "testing/logging/test_fixture.py::test_change_level_undo",
+    "testing/logging/test_fixture.py::test_ini_controls_global_log_level",
+    "testing/logging/test_fixture.py::test_caplog_can_override_global_log_level",
+    "testing/logging/test_fixture.py::test_caplog_captures_despite_exception",
+    "testing/logging/test_fixture.py::test_log_report_captures_according_to_config_option_upon_failure"
+  ],
+  "guide": {
+    "overview": "围绕日志与状态中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "src/_pytest/logging.py",
+      "testing/logging/test_fixture.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/pytest-dev/pytest.git pytest-dev__pytest-7571",
+      "cd pytest-dev__pytest-7571",
+      "git checkout -b spectrial-work 422685d0bdc110547535036c1ff398b5e1c44145"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "7f5fdc9b30151cba5271165dd8865884d611e55986a9b78afde4781b5471c9ee",
+    "eval.sh": "0ba64304dbd878c912d8c9555126044da05605def2bfa4266cc0e89aa4842e9b",
+    "test.patch": "3cd1ee3c3825b1cdda389712041a55e668f53ab63ed2ac99707ef7b36d4928db",
+    "repo-license.txt": "7898b9b164d4f93fd9a562fd0f592935518b48c4745303964110eb7f7fe64faf"
+  }
+}

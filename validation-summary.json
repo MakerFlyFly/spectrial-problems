@@ -1,0 +1,560 @@
+{
+  "release_ref": "v0.2.0",
+  "dataset_revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+  "limits": {
+    "cpu": 2,
+    "memory_gib": 3,
+    "timeout_seconds": 600,
+    "pids": 256,
+    "network": "none",
+    "runtime": "gVisor release-20261026.0"
+  },
+  "tasks": [
+    {
+      "task_id": "django__django-11333",
+      "task_version": "1.0.0",
+      "title": "避免重复构造 URL 解析器",
+      "repo": "django/django",
+      "difficulty": "进阶",
+      "base_commit": "55b68de643b5c2d5f0a8ea7587ab3b2966021ccc",
+      "image": "swebench/sweb.eval.x86_64.django_1776_django-11333@sha256:ac29b993b4361ddb0d77756862f5738f64a1d3332591f09e5a1d222e5dda78c9",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "9576a167a606321946c7de902db32198f03118455f8558eb904166448d987f91",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T07:27:09.671158+00:00",
+      "runs": [
+        {
+          "execution_id": "1b78a4e9-3798-4bbc-b52d-a42881011909",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 2,
+          "total": 3,
+          "duration_seconds": 85.96,
+          "valid": true
+        },
+        {
+          "execution_id": "e076ed58-0921-424e-b68f-75323fc8e4a0",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 3,
+          "total": 3,
+          "duration_seconds": 84.26,
+          "valid": true
+        },
+        {
+          "execution_id": "55609fc3-4540-45ed-b887-bd86e108c6be",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 3,
+          "total": 3,
+          "duration_seconds": 80.18,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "django__django-15127",
+      "task_version": "1.0.0",
+      "title": "让消息级别标签随配置覆盖更新",
+      "repo": "django/django",
+      "difficulty": "入门",
+      "base_commit": "9a6e2df3a8f01ea761529bec48e5a8dc0ea9575b",
+      "image": "swebench/sweb.eval.x86_64.django_1776_django-15127@sha256:2fbf01c7457fda0f49eef1e1c035b589ed12432ef307c368aac22af534f15fd4",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "f1ee82913b38e40de0ebddcd3b2eecb2bde6282452dc17a3bb7e36666226ea03",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T07:14:31.182135+00:00",
+      "runs": [
+        {
+          "execution_id": "9105ba8d-15bb-4061-bd2d-1221710b83cf",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 1,
+          "total": 2,
+          "duration_seconds": 38.1,
+          "valid": true
+        },
+        {
+          "execution_id": "fac89f9d-07b3-460f-8e2d-cc9a5fec45eb",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 2,
+          "total": 2,
+          "duration_seconds": 33.72,
+          "valid": true
+        },
+        {
+          "execution_id": "587990e6-5dfd-4fa8-b1af-caaef103dbea",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 2,
+          "total": 2,
+          "duration_seconds": 35.93,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "pallets__flask-5014",
+      "task_version": "1.0.0",
+      "title": "为 Blueprint 增加空名称校验",
+      "repo": "pallets/flask",
+      "difficulty": "入门",
+      "base_commit": "7ee9ceb71e868944a46e1ff00b506772a53a4f1d",
+      "image": "swebench/sweb.eval.x86_64.pallets_1776_flask-5014@sha256:bde4fbdafa36141d4396944da88ec37aabdef612ed36920090675bccd0ca5d72",
+      "parser_version": "swebench-02e7a74-pytest-v1",
+      "package_sha256": "81542982d758e66d59f49542ef88364a905d8e832fcae776552350305773eab5",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T07:34:18.340261+00:00",
+      "runs": [
+        {
+          "execution_id": "0d449484-f9ab-4f80-a0d9-aedb42c694bc",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 59,
+          "total": 60,
+          "duration_seconds": 18.47,
+          "valid": true
+        },
+        {
+          "execution_id": "4f145e08-d7a8-4305-a5a1-307586def7b9",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 60,
+          "total": 60,
+          "duration_seconds": 16.14,
+          "valid": true
+        },
+        {
+          "execution_id": "854d4266-7687-41b0-9e81-1763d48f4aed",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 60,
+          "total": 60,
+          "duration_seconds": 18.92,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "psf__requests-1142",
+      "task_version": "1.0.0",
+      "title": "修复请求中不恰当的 Content-Length",
+      "repo": "psf/requests",
+      "difficulty": "入门",
+      "base_commit": "22623bd8c265b78b161542663ee980738441c307",
+      "image": "swebench/sweb.eval.x86_64.psf_1776_requests-1142@sha256:b2733e57feb4cfaeac24ab5ec496d4cb89a37db53bd0ca72eaededdb2ce19d1c",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "c4c3c9ce59b7978359af325a5ecec597b511b344360f7398ef834a6cf599a4a1",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T07:19:24.197738+00:00",
+      "runs": [
+        {
+          "execution_id": "615a3892-39c2-437e-99a9-5a17db4e2a95",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 5,
+          "total": 6,
+          "duration_seconds": 19.7,
+          "valid": true
+        },
+        {
+          "execution_id": "f15ada92-5113-412c-b0e9-2bba5b64845b",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 6,
+          "total": 6,
+          "duration_seconds": 19.64,
+          "valid": true
+        },
+        {
+          "execution_id": "e04dce11-058c-417e-a3e1-6b9e3c830d0b",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 6,
+          "total": 6,
+          "duration_seconds": 18.47,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "psf__requests-6028",
+      "task_version": "1.0.0",
+      "title": "修复代理地址中的认证信息解析",
+      "repo": "psf/requests",
+      "difficulty": "进阶",
+      "base_commit": "0192aac24123735b3eaf9b08df46429bb770c283",
+      "image": "swebench/sweb.eval.x86_64.psf_1776_requests-6028@sha256:639088346355ea7076bc6faf2eadb23b1e1f1ed4f34b291e843061b2fc87cbe2",
+      "parser_version": "swebench-02e7a74-pytest-v1",
+      "package_sha256": "ab4a8d14c15afe47657c2b43e3bc6a7555c84a58b87a63af6b9f5490ebe88e32",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T07:35:21.407204+00:00",
+      "runs": [
+        {
+          "execution_id": "2481676c-c0e1-4513-9486-32207fd54825",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 185,
+          "total": 187,
+          "duration_seconds": 20.0,
+          "valid": true
+        },
+        {
+          "execution_id": "ad0015b6-460f-41e7-a3f2-e054dd3969f0",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 187,
+          "total": 187,
+          "duration_seconds": 19.01,
+          "valid": true
+        },
+        {
+          "execution_id": "1956b349-7fd0-4f8d-800d-35997df0cead",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 187,
+          "total": 187,
+          "duration_seconds": 22.43,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "pylint-dev__pylint-6386",
+      "task_version": "1.0.0",
+      "title": "规范短格式详细输出选项的参数",
+      "repo": "pylint-dev/pylint",
+      "difficulty": "进阶",
+      "base_commit": "754b487f4d892e3d4872b6fc7468a71db4e31c13",
+      "image": "swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-6386@sha256:fda08a7a0a711af33163d53ed09b8401d84b7c9bb76b31e25a81357c98e6aeed",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "789b2766dde3737e73f9e991b5fc2e14d2d7580910545ca41b4693f5912024b8",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T07:22:04.303228+00:00",
+      "runs": [
+        {
+          "execution_id": "0ee828fb-7d12-4506-a11d-ae1c0d94ed70",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 7,
+          "total": 8,
+          "duration_seconds": 33.48,
+          "valid": true
+        },
+        {
+          "execution_id": "8983cdf5-2fb4-4d80-99c2-052f05342bd9",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 8,
+          "total": 8,
+          "duration_seconds": 32.81,
+          "valid": true
+        },
+        {
+          "execution_id": "94723ac9-9e68-4395-97ec-286c29d686a5",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 8,
+          "total": 8,
+          "duration_seconds": 31.63,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "pylint-dev__pylint-6903",
+      "task_version": "1.0.0",
+      "title": "修复容器中自动选择工作进程数失败",
+      "repo": "pylint-dev/pylint",
+      "difficulty": "入门",
+      "base_commit": "ca80f03a43bc39e4cc2c67dc99817b3c9f13b8a6",
+      "image": "swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-6903@sha256:bad80b1c20eeb5d49a6e82dc485ee40fbd67b91df47b56740e1be5471b678f5b",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "1ede416776d32228a2020f49f2b131cfbc6e21a8a4ef29581819bb23d6958bdb",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T07:48:55.420104+00:00",
+      "runs": [
+        {
+          "execution_id": "a3f56d03-5b41-49b5-8ed0-24e8a01fd377",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 8,
+          "total": 9,
+          "duration_seconds": 74.35,
+          "valid": true
+        },
+        {
+          "execution_id": "70e3101b-919f-47e7-9687-bd1cab5df480",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 9,
+          "total": 9,
+          "duration_seconds": 67.16,
+          "valid": true
+        },
+        {
+          "execution_id": "2c6a8ce2-8ce7-4a44-b5cd-d64b61d41690",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 9,
+          "total": 9,
+          "duration_seconds": 68.63,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "pytest-dev__pytest-10051",
+      "task_version": "1.0.0",
+      "title": "修复日志清空后的状态不一致",
+      "repo": "pytest-dev/pytest",
+      "difficulty": "进阶",
+      "base_commit": "aa55975c7d3f6c9f6d7f68accc41bb7cadf0eb9a",
+      "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-10051@sha256:e38365e835d4ba57f3e7331778894f51ac20bf6c5893827065da8657525e123f",
+      "parser_version": "swebench-02e7a74-pytest-v1",
+      "package_sha256": "ca9120cc69a7359bc68ed27e38acb9aa83f4247b37164b5234df4a82dcd9e16e",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T07:36:14.407300+00:00",
+      "runs": [
+        {
+          "execution_id": "81530d85-183d-4554-8fe0-f5d9c3d572ad",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 15,
+          "total": 16,
+          "duration_seconds": 17.6,
+          "valid": true
+        },
+        {
+          "execution_id": "9f3c3f0b-b1c8-46be-8f6a-dd8f14a90868",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 16,
+          "total": 16,
+          "duration_seconds": 16.11,
+          "valid": true
+        },
+        {
+          "execution_id": "5ad92d16-5e05-47c3-aaee-e8dbc9659bb6",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 16,
+          "total": 16,
+          "duration_seconds": 18.12,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "pytest-dev__pytest-5809",
+      "task_version": "1.0.0",
+      "title": "修复 pastebin 功能的语法高亮类型",
+      "repo": "pytest-dev/pytest",
+      "difficulty": "入门",
+      "base_commit": "8aba863a634f40560e25055d179220f0eefabe9a",
+      "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-5809@sha256:0185f5d9efb9cf1364122a7eff7fc5f02227698d01f7e4f2d593917816df42d3",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "b26a17e340f46e6f4788754f24ccf3f7e958227096b1debade0af7934129bf48",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T07:53:51.019240+00:00",
+      "runs": [
+        {
+          "execution_id": "87daa593-04ff-44b0-ac00-a220f2b657f0",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 3,
+          "total": 4,
+          "duration_seconds": 18.57,
+          "valid": true
+        },
+        {
+          "execution_id": "aa4f8350-7496-40aa-bf0f-b93d0c92d38c",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 4,
+          "total": 4,
+          "duration_seconds": 17.76,
+          "valid": true
+        },
+        {
+          "execution_id": "3b0fcf43-f056-4f4e-850f-6fc1a860beda",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 4,
+          "total": 4,
+          "duration_seconds": 18.32,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "pytest-dev__pytest-7571",
+      "task_version": "1.0.0",
+      "title": "在测试结束后恢复 caplog 日志级别",
+      "repo": "pytest-dev/pytest",
+      "difficulty": "进阶",
+      "base_commit": "422685d0bdc110547535036c1ff398b5e1c44145",
+      "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-7571@sha256:0a1f84cd32e2c8332f90bfad6f3fd16304f25c01384adb4ffd4f7250316bd60a",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "cd501247b0134c676b7532f4b2e11eccad1eb218e9ea0076c084cbcc01cc7ffa",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T07:17:43.150190+00:00",
+      "runs": [
+        {
+          "execution_id": "be7605c3-ddfd-4134-ba31-c26bceb7c5f2",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 14,
+          "total": 15,
+          "duration_seconds": 16.16,
+          "valid": true
+        },
+        {
+          "execution_id": "426b3d24-f61c-4a72-a4ec-de051d5ff5f7",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 15,
+          "total": 15,
+          "duration_seconds": 25.11,
+          "valid": true
+        },
+        {
+          "execution_id": "1a8810c6-cadf-492b-92f9-c1070404e687",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 15,
+          "total": 15,
+          "duration_seconds": 17.15,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "sphinx-doc__sphinx-8035",
+      "task_version": "1.0.1",
+      "title": "支持为自动文档指定私有成员名单",
+      "repo": "sphinx-doc/sphinx",
+      "difficulty": "进阶",
+      "base_commit": "5e6da19f0e44a0ae83944fb6ce18f18f781e1a6e",
+      "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8035@sha256:8f0c620e13fade585f0be2ed8f9d394319c63f33729e2fe4780360dca7871c19",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "b76aa9006cab674d1406687e7b788a9189c9b7f49f3b42bbf4663f93b8994262",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T07:41:28.573454+00:00",
+      "runs": [
+        {
+          "execution_id": "eebf5d4d-ab50-4a3f-8f34-138eb9569437",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 2,
+          "total": 3,
+          "duration_seconds": 42.66,
+          "valid": true
+        },
+        {
+          "execution_id": "e1a34e8c-66a2-471b-b8e3-a4b42af0de8f",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 3,
+          "total": 3,
+          "duration_seconds": 36.3,
+          "valid": true
+        },
+        {
+          "execution_id": "db362aa4-e5d0-4850-829a-09e445f0bab2",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 3,
+          "total": 3,
+          "duration_seconds": 39.19,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "sphinx-doc__sphinx-8593",
+      "task_version": "1.0.1",
+      "title": "修复变量的公开成员元数据识别",
+      "repo": "sphinx-doc/sphinx",
+      "difficulty": "进阶",
+      "base_commit": "07983a5a8704ad91ae855218ecbda1c8598200ca",
+      "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8593@sha256:815b32905af211560f2ccece18e672fb3660569d3f00b3b6c663fe55efe8e6a8",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "db48fd7e0ff86a82e602f3d78773aecb827e6e7c99ebd897a983fd3bd1ad63b2",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T07:44:24.617224+00:00",
+      "runs": [
+        {
+          "execution_id": "dae28b71-c1ce-4b99-a4f1-9e7372c213ef",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 1,
+          "total": 3,
+          "duration_seconds": 40.1,
+          "valid": true
+        },
+        {
+          "execution_id": "b95d11fe-f5b7-4de5-b3a4-e13a611dd562",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 3,
+          "total": 3,
+          "duration_seconds": 40.67,
+          "valid": true
+        },
+        {
+          "execution_id": "b7be60c2-2622-407b-a9c8-ceda924bbd23",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 3,
+          "total": 3,
+          "duration_seconds": 41.14,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "sympy__sympy-20916",
+      "task_version": "1.0.0",
+      "title": "修复希腊字母下标的 Unicode 排版",
+      "repo": "sympy/sympy",
+      "difficulty": "入门",
+      "base_commit": "82298df6a51491bfaad0c6d1980e7e3ca808ae93",
+      "image": "swebench/sweb.eval.x86_64.sympy_1776_sympy-20916@sha256:cd63c5ad1e2dab2e4f222cdd069ab620b69b3607d6a56c23922bd7de441dc1bc",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "696c0d8e07388df3bb995a489cc2cc9fb0fdac6c965a3c695bee7134bcc9c483",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T07:51:29.374731+00:00",
+      "runs": [
+        {
+          "execution_id": "5456f7ee-fee9-4cbf-9458-e6e3cf0bbe5f",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 1,
+          "total": 2,
+          "duration_seconds": 35.94,
+          "valid": true
+        },
+        {
+          "execution_id": "7f3a0a3b-cdb5-4973-893a-fe71d0fceec5",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 2,
+          "total": 2,
+          "duration_seconds": 34.29,
+          "valid": true
+        },
+        {
+          "execution_id": "79ad5956-2600-421b-9d92-784c1ca53606",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 2,
+          "total": 2,
+          "duration_seconds": 34.98,
+          "valid": true
+        }
+      ]
+    }
+  ]
+}

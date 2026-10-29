@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "task_id": "psf__requests-1142",
+  "task_version": "1.0.0",
+  "title": "修复请求中不恰当的 Content-Length",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "psf/requests",
+  "base_commit": "22623bd8c265b78b161542663ee980738441c307",
+  "kind": "bugfix",
+  "difficulty": "入门",
+  "tags": [
+    "Python",
+    "Requests",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 25,
+  "allowed_paths": [
+    "requests/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "psf__requests-1142",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.psf_1776_requests-1142@sha256:b2733e57feb4cfaeac24ab5ec496d4cb89a37db53bd0ca72eaededdb2ce19d1c",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_requests",
+  "fail_to_pass": [
+    "test_requests.py::RequestsTestCase::test_no_content_length"
+  ],
+  "pass_to_pass": [
+    "test_requests.py::RequestsTestCase::test_basic_building",
+    "test_requests.py::RequestsTestCase::test_entry_points",
+    "test_requests.py::RequestsTestCase::test_invalid_url",
+    "test_requests.py::RequestsTestCase::test_params_are_added_before_fragment",
+    "test_requests.py::RequestsTestCase::test_path_is_not_double_encoded"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "requests/models.py",
+      "test_requests.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/psf/requests.git psf__requests-1142",
+      "cd psf__requests-1142",
+      "git checkout -b spectrial-work 22623bd8c265b78b161542663ee980738441c307"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "0192533ff2ef0c53a600b3ef02cb9dc20bf0998d56eeaee80ca1a76c46758eec",
+    "eval.sh": "7c1b567c7a139bd101d845a0f1dca55fe4f95daaeceacfcb3ae8e5e0522ab972",
+    "test.patch": "6671e023a6f6ed84969327ccee025cb8ab81e79c9477a7d635640c0b03836769",
+    "repo-license.txt": "c11460418c5164a489643eae3da311d0fb1d61931c71c64ff83090c1cad1184b"
+  }
+}

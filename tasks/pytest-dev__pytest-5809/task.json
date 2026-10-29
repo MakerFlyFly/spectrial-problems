@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "task_id": "pytest-dev__pytest-5809",
+  "task_version": "1.0.0",
+  "title": "修复 pastebin 功能的语法高亮类型",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "pytest-dev/pytest",
+  "base_commit": "8aba863a634f40560e25055d179220f0eefabe9a",
+  "kind": "bugfix",
+  "difficulty": "入门",
+  "tags": [
+    "Python",
+    "Pytest",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 25,
+  "allowed_paths": [
+    "src/_pytest/",
+    "_pytest/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "pytest-dev__pytest-5809",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-5809@sha256:0185f5d9efb9cf1364122a7eff7fc5f02227698d01f7e4f2d593917816df42d3",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_pytest",
+  "fail_to_pass": [
+    "testing/test_pastebin.py::TestPaste::test_create_new_paste"
+  ],
+  "pass_to_pass": [
+    "testing/test_pastebin.py::TestPasteCapture::test_failed",
+    "testing/test_pastebin.py::TestPasteCapture::test_all",
+    "testing/test_pastebin.py::TestPasteCapture::test_non_ascii_paste_text"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "src/_pytest/pastebin.py",
+      "testing/test_pastebin.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/pytest-dev/pytest.git pytest-dev__pytest-5809",
+      "cd pytest-dev__pytest-5809",
+      "git checkout -b spectrial-work 8aba863a634f40560e25055d179220f0eefabe9a"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "20776f12b83f2d7dae17a3e76379b5f992df718ed91cbc3af8bcc379723a7699",
+    "eval.sh": "d91612830bde43fffe596f8f45a332afa32089e13c5464f80b03110789c80e23",
+    "test.patch": "901d551b0f8a9fb05e3d5440019347ed4d20985a3c898f97210c628504fcfe09",
+    "repo-license.txt": "4be38574daf05665b6194e4fd84c5ef6ce7c3a2810308a5222d5cdffc2d04d18"
+  }
+}

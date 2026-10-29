@@ -4,13 +4,25 @@
 
 本仓库公开题目、固定版本、环境定义、完整评测测试及独立复现工具，不依赖 SpecTrial 的私有业务后端。
 
-## 首批题目
+## 题库
 
-| 题目 | 仓库 | 练习重点 |
-| --- | --- | --- |
-| `pallets__flask-5014` | Flask | Blueprint 初始化与输入校验 |
-| `psf__requests-6028` | Requests | 代理 URL 与认证信息解析 |
-| `pytest-dev__pytest-10051` | Pytest | 日志捕获、可变对象与状态一致性 |
+当前 Release 包含 **13 道**已通过基线与两次参考补丁验证的题目。
+
+| 题目 | 仓库 | 难度 | 固定测试 |
+| --- | --- | --- | --- |
+| [避免重复构造 URL 解析器](tasks/django__django-11333/problem.md) | django/django | 进阶 | 3 |
+| [让消息级别标签随配置覆盖更新](tasks/django__django-15127/problem.md) | django/django | 入门 | 2 |
+| [为 Blueprint 增加空名称校验](tasks/pallets__flask-5014/problem.md) | pallets/flask | 入门 | 60 |
+| [修复请求中不恰当的 Content-Length](tasks/psf__requests-1142/problem.md) | psf/requests | 入门 | 6 |
+| [修复代理地址中的认证信息解析](tasks/psf__requests-6028/problem.md) | psf/requests | 进阶 | 187 |
+| [规范短格式详细输出选项的参数](tasks/pylint-dev__pylint-6386/problem.md) | pylint-dev/pylint | 进阶 | 8 |
+| [修复容器中自动选择工作进程数失败](tasks/pylint-dev__pylint-6903/problem.md) | pylint-dev/pylint | 入门 | 9 |
+| [修复日志清空后的状态不一致](tasks/pytest-dev__pytest-10051/problem.md) | pytest-dev/pytest | 进阶 | 16 |
+| [修复 pastebin 功能的语法高亮类型](tasks/pytest-dev__pytest-5809/problem.md) | pytest-dev/pytest | 入门 | 4 |
+| [在测试结束后恢复 caplog 日志级别](tasks/pytest-dev__pytest-7571/problem.md) | pytest-dev/pytest | 进阶 | 15 |
+| [支持为自动文档指定私有成员名单](tasks/sphinx-doc__sphinx-8035/problem.md) | sphinx-doc/sphinx | 进阶 | 3 |
+| [修复变量的公开成员元数据识别](tasks/sphinx-doc__sphinx-8593/problem.md) | sphinx-doc/sphinx | 进阶 | 3 |
+| [修复希腊字母下标的 Unicode 排版](tasks/sympy__sympy-20916/problem.md) | sympy/sympy | 入门 | 2 |
 
 来源为 [SWE-bench Verified](https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified)，数据 revision 固定为 `78f471bf655a3137b2e8a75af1501690ec009ec3`。每个任务记录原仓库、完整 `base_commit`、容器镜像 digest、来源 ID 与资产摘要。
 
@@ -56,7 +68,7 @@ tools/                  # 校验、补丁导出与独立复现工具
 
 同一 `task_id@task_version` 不可变。修改题面、环境、测试或元数据时增加版本。Release 提供源码归档与 SHA-256 清单，平台消费固定发布版本，不跟踪运行中的主分支。
 
-目前支持三个题目使用的 pytest 解析器变体，判分要求所有 `FAIL_TO_PASS` 和 `PASS_TO_PASS` 用例均通过。复现解析器来源和许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。公开的参考解答在原始数据集中可查，因此这些题目用于自主练习。
+保留 v1 解析器兼容历史题目，v2 支持 Django、Sphinx、Pylint 等 Python 仓库。判分要求所有 `FAIL_TO_PASS` 和 `PASS_TO_PASS` 用例均通过。复现解析器来源和许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。公开的参考解答在原始数据集中可查，因此这些题目用于自主练习。
 
 ## 贡献题目
 
@@ -70,3 +82,5 @@ python tools/validate.py
 ## 许可
 
 新增脚本、协议及元数据使用 MIT。SWE-bench 资产保留其来源与署名；原仓库代码和测试沿用对应 `repo-license.txt`，本仓库不对其统一重新许可。题库不包含学生提交、平台凭据或私有业务后端。
+
+Sphinx 题包中的 `upstream-eval.sh` 保存原始脚本，`eval.sh` 仅增加 `-rA` 完整结果报告选项，不改变测试选集或断言。基线和两次参考补丁的验收摘要见 `validation-summary.json`。

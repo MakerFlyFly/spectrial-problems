@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "task_id": "sympy__sympy-20916",
+  "task_version": "1.0.0",
+  "title": "修复希腊字母下标的 Unicode 排版",
+  "summary": "围绕表达式排版中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "sympy/sympy",
+  "base_commit": "82298df6a51491bfaad0c6d1980e7e3ca808ae93",
+  "kind": "bugfix",
+  "difficulty": "入门",
+  "tags": [
+    "Python",
+    "Sympy",
+    "表达式排版"
+  ],
+  "estimated_minutes": 25,
+  "allowed_paths": [
+    "sympy/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "sympy__sympy-20916",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.sympy_1776_sympy-20916@sha256:cd63c5ad1e2dab2e4f222cdd069ab620b69b3607d6a56c23922bd7de441dc1bc",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_sympy",
+  "fail_to_pass": [
+    "test_super_sub"
+  ],
+  "pass_to_pass": [
+    "test_requires_partial"
+  ],
+  "guide": {
+    "overview": "围绕表达式排版中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "sympy/printing/conventions.py",
+      "sympy/printing/tests/test_conventions.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/sympy/sympy.git sympy__sympy-20916",
+      "cd sympy__sympy-20916",
+      "git checkout -b spectrial-work 82298df6a51491bfaad0c6d1980e7e3ca808ae93"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "16510086c0a84eef15369ac0b6b739cfa81ef687894bdfd401913a94f32b8a59",
+    "eval.sh": "e53ea2a3c97ef76758741396f68e180320ff28c58201936fb6cb655d3cb14664",
+    "test.patch": "3c08320af56592925054dd610a4818e0642559cf18d41246b73aab13ce159464",
+    "repo-license.txt": "a7212a73709d040d7b932440f84c71e2334c045faaae589e9905ec1e9fbfd443"
+  }
+}

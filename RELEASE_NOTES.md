@@ -1,12 +1,9 @@
-# SpecTrial task bank v0.1.1
+# SpecTrial task bank v0.2.0
 
-Fix independent reproduction by preserving the ordering of stdout and stderr (the upstream evaluation markers are emitted on stderr). Empty patches now run the clean baseline, and command-line output consistently uses UTF-8. Task packages and fixed test sets are unchanged from v0.1.0.
+共 13 道真实仓库练习题，来源为固定 SWE-bench Verified 快照。
 
-Initial reproducible practice set: Flask Blueprint validation, Requests proxy URL parsing, and Pytest captured-log state consistency.
+仓库：django/django (2), pallets/flask (1), psf/requests (2), pylint-dev/pylint (2), pytest-dev/pytest (3), sphinx-doc/sphinx (2), sympy/sympy (1)。
 
-- TaskPackage v1 schema and checksum validation.
-- Frozen repository base commits and container image digests.
-- Original problem statements, complete evaluation tests, Chinese onboarding notes and repository licenses.
-- Cross-platform patch export and Docker-based local reproduction.
+难度：入门 6, 进阶 7。
 
-The hosted platform publishes only instances whose baseline and reference patches have passed isolated evaluation checks. Original benchmark solutions are public; this release is intended for practice.
+每题保留完整 F2P/P2P、准确基线、镜像 digest 与原仓库许可证，并通过 gVisor 断网环境下的基线及两次参考补丁验证。现有任务版本保持不变；历史解析器继续兼容。题包不包含参考补丁、学生提交或平台凭据。

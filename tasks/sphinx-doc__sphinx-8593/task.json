@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "task_id": "sphinx-doc__sphinx-8593",
+  "task_version": "1.0.1",
+  "title": "修复变量的公开成员元数据识别",
+  "summary": "围绕自动文档中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "sphinx-doc/sphinx",
+  "base_commit": "07983a5a8704ad91ae855218ecbda1c8598200ca",
+  "kind": "bugfix",
+  "difficulty": "进阶",
+  "tags": [
+    "Python",
+    "Sphinx",
+    "自动文档"
+  ],
+  "estimated_minutes": 55,
+  "allowed_paths": [
+    "sphinx/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "sphinx-doc__sphinx-8593",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8593@sha256:815b32905af211560f2ccece18e672fb3660569d3f00b3b6c663fe55efe8e6a8",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_sphinx",
+  "fail_to_pass": [
+    "tests/test_ext_autodoc_private_members.py::test_private_field",
+    "tests/test_ext_autodoc_private_members.py::test_private_members"
+  ],
+  "pass_to_pass": [
+    "tests/test_ext_autodoc_private_members.py::test_private_field_and_private_members"
+  ],
+  "guide": {
+    "overview": "围绕自动文档中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "sphinx/ext/autodoc/__init__.py",
+      "sphinx/ext/autodoc/importer.py",
+      "tests/roots/test-ext-autodoc/target/private.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/sphinx-doc/sphinx.git sphinx-doc__sphinx-8593",
+      "cd sphinx-doc__sphinx-8593",
+      "git checkout -b spectrial-work 07983a5a8704ad91ae855218ecbda1c8598200ca"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "6d7a1e5ef36a9147eb437c3f3bf7b130489cd4bb4e9ed4f4a2cdfa23610d7b7b",
+    "eval.sh": "1847f3cfc4de7d2ecc2a42226266ed251c251fb2082be48c6b54c05818b1c70c",
+    "test.patch": "5c4fe5ea0e0c0f4cfd8f3b3545ca78d393460ecbae886e167efec5bad22edc50",
+    "repo-license.txt": "f275b949f651f373e41cdd163ffa89b419497f89990e1a86753ac64a33829404",
+    "upstream-eval.sh": "0e97ccdfaa8fef9975cbd56a54e63e6b8b3bd61647a884ae7a133369d1819427"
+  }
+}

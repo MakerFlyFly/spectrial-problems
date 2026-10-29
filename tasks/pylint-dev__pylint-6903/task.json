@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "task_id": "pylint-dev__pylint-6903",
+  "task_version": "1.0.0",
+  "title": "修复容器中自动选择工作进程数失败",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "pylint-dev/pylint",
+  "base_commit": "ca80f03a43bc39e4cc2c67dc99817b3c9f13b8a6",
+  "kind": "bugfix",
+  "difficulty": "入门",
+  "tags": [
+    "Python",
+    "Pylint",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 25,
+  "allowed_paths": [
+    "pylint/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "pylint-dev__pylint-6903",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-6903@sha256:bad80b1c20eeb5d49a6e82dc485ee40fbd67b91df47b56740e1be5471b678f5b",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_pylint",
+  "fail_to_pass": [
+    "tests/test_pylint_runners.py::test_pylint_run_jobs_equal_zero_dont_crash_with_cpu_fraction"
+  ],
+  "pass_to_pass": [
+    "tests/test_pylint_runners.py::test_runner[run_epylint]",
+    "tests/test_pylint_runners.py::test_runner[run_pylint]",
+    "tests/test_pylint_runners.py::test_runner[run_pyreverse]",
+    "tests/test_pylint_runners.py::test_runner[run_symilar]",
+    "tests/test_pylint_runners.py::test_runner_with_arguments[run_epylint]",
+    "tests/test_pylint_runners.py::test_runner_with_arguments[run_pylint]",
+    "tests/test_pylint_runners.py::test_runner_with_arguments[run_pyreverse]",
+    "tests/test_pylint_runners.py::test_runner_with_arguments[run_symilar]"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "pylint/lint/run.py",
+      "tests/test_pylint_runners.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/pylint-dev/pylint.git pylint-dev__pylint-6903",
+      "cd pylint-dev__pylint-6903",
+      "git checkout -b spectrial-work ca80f03a43bc39e4cc2c67dc99817b3c9f13b8a6"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "0bdc3dd1eaa84d947733bea808a2aa7c6c18f69c90e26bddfc275c52cdd0417e",
+    "eval.sh": "16dc95539a9344bee0a4391e1e4ff368fffec72f9971152d9374be590e6f1dff",
+    "test.patch": "e69b5e44c833af7f8d83cc91d97fe7bf7ac47ac1c24bfa8ab2a3ee47cd60121a",
+    "repo-license.txt": "f97b14080de8b8490d60eb3d620ebc419943e0779466d1dd0d5d6f68fe195dcd"
+  }
+}
