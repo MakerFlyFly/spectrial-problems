@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "task_id": "sphinx-doc__sphinx-9229",
+  "task_version": "1.0.1",
+  "title": "修复类型别名文档的不一致行为",
+  "summary": "围绕自动文档中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "sphinx-doc/sphinx",
+  "base_commit": "876fa81e0a038cda466925b85ccf6c5452e0f685",
+  "kind": "bugfix",
+  "difficulty": "挑战",
+  "tags": [
+    "Python",
+    "Sphinx",
+    "自动文档"
+  ],
+  "estimated_minutes": 120,
+  "allowed_paths": [
+    "sphinx/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "sphinx-doc__sphinx-9229",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9229@sha256:63840fa7b92aa018cc9d45344872ebb241951a44c05c41fa8e6a038c28ffb6b8",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_sphinx",
+  "fail_to_pass": [
+    "tests/test_ext_autodoc_autoclass.py::test_class_alias_having_doccomment"
+  ],
+  "pass_to_pass": [
+    "tests/test_ext_autodoc_autoclass.py::test_classes",
+    "tests/test_ext_autodoc_autoclass.py::test_instance_variable",
+    "tests/test_ext_autodoc_autoclass.py::test_inherited_instance_variable",
+    "tests/test_ext_autodoc_autoclass.py::test_uninitialized_attributes",
+    "tests/test_ext_autodoc_autoclass.py::test_undocumented_uninitialized_attributes",
+    "tests/test_ext_autodoc_autoclass.py::test_decorators",
+    "tests/test_ext_autodoc_autoclass.py::test_properties",
+    "tests/test_ext_autodoc_autoclass.py::test_slots_attribute",
+    "tests/test_ext_autodoc_autoclass.py::test_show_inheritance_for_subclass_of_generic_type",
+    "tests/test_ext_autodoc_autoclass.py::test_class_doc_from_class",
+    "tests/test_ext_autodoc_autoclass.py::test_class_doc_from_init",
+    "tests/test_ext_autodoc_autoclass.py::test_class_doc_from_both",
+    "tests/test_ext_autodoc_autoclass.py::test_class_alias"
+  ],
+  "guide": {
+    "overview": "围绕自动文档中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "sphinx/ext/autodoc/__init__.py",
+      "tests/roots/test-ext-autodoc/target/classes.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/sphinx-doc/sphinx.git sphinx-doc__sphinx-9229",
+      "cd sphinx-doc__sphinx-9229",
+      "git checkout -b spectrial-work 876fa81e0a038cda466925b85ccf6c5452e0f685"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "b8334929687486d212ca96accd706433b4579c5f95f18203bc638772c5f3d129",
+    "eval.sh": "b95784c14695fdb1d9d9f303ce77dbe18c016da18a5a41a1c9f49b3dbf876668",
+    "test.patch": "a8e12b2a7914effc59e2e01301cd227b8486db5bf2bf9f9419cb5fd637cf863c",
+    "repo-license.txt": "058abe6d05d2fd185ed5cbc89d473a4722e43131582c93a040f78c4581f32943",
+    "upstream-eval.sh": "51ee01d62cac6666eba0b5058a1500af3d8bf5d1daa85737e6cef1c798df9186"
+  }
+}

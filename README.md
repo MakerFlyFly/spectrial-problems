@@ -6,7 +6,7 @@
 
 ## 题库
 
-当前 Release 包含 **43 道**已通过基线与两次参考补丁验证的题目。
+当前 Release 包含 **50 道**已通过基线与两次参考补丁验证的题目。
 
 | 题目 | 仓库 | 难度 | 固定测试 |
 | --- | --- | --- | --- |
@@ -17,6 +17,7 @@
 | [修复视图文档字符串的渲染错误](tasks/django__django-12155/problem.md) | django/django | 进阶 | 7 |
 | [让消息级别标签随配置覆盖更新](tasks/django__django-15127/problem.md) | django/django | 入门 | 2 |
 | [修正 PostgreSQL dbshell 的参数顺序](tasks/django__django-15851/problem.md) | django/django | 入门 | 9 |
+| [修复 floatformat 的小数精度丢失](tasks/django__django-15863/problem.md) | django/django | 入门 | 10 |
 | [让另存为新对象遵循新增权限](tasks/django__django-16527/problem.md) | django/django | 进阶 | 7 |
 | [修复多条件异或查询的奇偶语义](tasks/django__django-16901/problem.md) | django/django | 进阶 | 7 |
 | [让后台内联表单使用 UUID 默认值](tasks/django__django-16950/problem.md) | django/django | 进阶 | 4 |
@@ -29,7 +30,9 @@
 | [让递归扫描遵循忽略路径配置](tasks/pylint-dev__pylint-7080/problem.md) | pylint-dev/pylint | 进阶 | 121 |
 | [修复日志清空后的状态不一致](tasks/pytest-dev__pytest-10051/problem.md) | pytest-dev/pytest | 进阶 | 16 |
 | [修复跳过 unittest 类时的调试清理流程](tasks/pytest-dev__pytest-10081/problem.md) | pytest-dev/pytest | 入门 | 64 |
+| [按方法解析顺序继承测试标记](tasks/pytest-dev__pytest-10356/problem.md) | pytest-dev/pytest | 挑战 | 80 |
 | [修复替换数组对象时的测试收集异常](tasks/pytest-dev__pytest-5631/problem.md) | pytest-dev/pytest | 进阶 | 16 |
+| [在异常序列化中保留异常链](tasks/pytest-dev__pytest-5787/problem.md) | pytest-dev/pytest | 挑战 | 125 |
 | [修复 pastebin 功能的语法高亮类型](tasks/pytest-dev__pytest-5809/problem.md) | pytest-dev/pytest | 入门 | 4 |
 | [修复 Windows 路径大小写导致的配置导入失败](tasks/pytest-dev__pytest-5840/problem.md) | pytest-dev/pytest | 进阶 | 53 |
 | [保留测试报告标题中的参数表示](tasks/pytest-dev__pytest-6202/problem.md) | pytest-dev/pytest | 入门 | 73 |
@@ -37,18 +40,22 @@
 | [修复调试模式下跳过测试的清理流程](tasks/pytest-dev__pytest-7236/problem.md) | pytest-dev/pytest | 进阶 | 52 |
 | [修复调试版 Python 下的标记表达式崩溃](tasks/pytest-dev__pytest-7324/problem.md) | pytest-dev/pytest | 进阶 | 61 |
 | [修复 runxfail 下跳过测试的位置报告](tasks/pytest-dev__pytest-7432/problem.md) | pytest-dev/pytest | 入门 | 78 |
+| [正确处理动态添加的 xfail 标记](tasks/pytest-dev__pytest-7490/problem.md) | pytest-dev/pytest | 进阶 | 80 |
 | [在测试结束后恢复 caplog 日志级别](tasks/pytest-dev__pytest-7571/problem.md) | pytest-dev/pytest | 进阶 | 15 |
 | [恢复符号链接目录中的测试收集](tasks/pytest-dev__pytest-7982/problem.md) | pytest-dev/pytest | 入门 | 79 |
 | [保持 unittest 类级 fixture 的私有性](tasks/pytest-dev__pytest-8399/problem.md) | pytest-dev/pytest | 进阶 | 60 |
 | [去除国际化消息的重复源位置](tasks/sphinx-doc__sphinx-10466/problem.md) | sphinx-doc/sphinx | 进阶 | 7 |
 | [修复继承关系图 SVG 中的链接](tasks/sphinx-doc__sphinx-10614/problem.md) | sphinx-doc/sphinx | 进阶 | 6 |
+| [正确处理目录中的特殊索引页面](tasks/sphinx-doc__sphinx-10673/problem.md) | sphinx-doc/sphinx | 进阶 | 10 |
 | [修复 rst_prolog 导致顶层标题丢失](tasks/sphinx-doc__sphinx-11445/problem.md) | sphinx-doc/sphinx | 进阶 | 10 |
 | [让 source-read 事件修改包含文件内容](tasks/sphinx-doc__sphinx-11510/problem.md) | sphinx-doc/sphinx | 挑战 | 9 |
+| [识别术语表中大小写不同的重复词条](tasks/sphinx-doc__sphinx-7440/problem.md) | sphinx-doc/sphinx | 入门 | 13 |
 | [修复泛型类在自动文档模拟环境中的异常](tasks/sphinx-doc__sphinx-7889/problem.md) | sphinx-doc/sphinx | 入门 | 6 |
 | [支持为自动文档指定私有成员名单](tasks/sphinx-doc__sphinx-8035/problem.md) | sphinx-doc/sphinx | 进阶 | 3 |
 | [补全继承属性的自动文档](tasks/sphinx-doc__sphinx-8548/problem.md) | sphinx-doc/sphinx | 挑战 | 6 |
 | [修复变量的公开成员元数据识别](tasks/sphinx-doc__sphinx-8593/problem.md) | sphinx-doc/sphinx | 进阶 | 3 |
 | [禁用 EPUB 时不再生成源码查看页](tasks/sphinx-doc__sphinx-8721/problem.md) | sphinx-doc/sphinx | 入门 | 4 |
+| [修复类型别名文档的不一致行为](tasks/sphinx-doc__sphinx-9229/problem.md) | sphinx-doc/sphinx | 挑战 | 14 |
 | [修复快速建站遇到已有配置时无法退出](tasks/sphinx-doc__sphinx-9320/problem.md) | sphinx-doc/sphinx | 入门 | 10 |
 | [支持向量与零的加法](tasks/sympy__sympy-14711/problem.md) | sympy/sympy | 入门 | 3 |
 | [修复希腊字母下标的 Unicode 排版](tasks/sympy__sympy-20916/problem.md) | sympy/sympy | 入门 | 2 |

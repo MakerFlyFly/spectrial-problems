@@ -1,5 +1,5 @@
 {
-  "release_ref": "v0.2.3",
+  "release_ref": "v0.2.4",
   "dataset_revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
   "limits": {
     "cpu": 2,
@@ -300,6 +300,48 @@
           "passed": 9,
           "total": 9,
           "duration_seconds": 34.99,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "django__django-15863",
+      "task_version": "1.0.0",
+      "title": "修复 floatformat 的小数精度丢失",
+      "repo": "django/django",
+      "difficulty": "入门",
+      "base_commit": "37c5b8c07be104fd5288cd87f101e48cb7a40298",
+      "image": "swebench/sweb.eval.x86_64.django_1776_django-15863@sha256:6fa751d50cbfcf2b3b2234fb5ec04f46887607fa6085cea4a5994769a9f5b214",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "c859a4c6daae719732fb2c5928040339f02e18bffbd5244c02ee890c8fb5f8e1",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T10:34:06.202200+00:00",
+      "runs": [
+        {
+          "execution_id": "f1cd2966-bac6-40c8-8e59-615a2270a692",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 9,
+          "total": 10,
+          "duration_seconds": 36.37,
+          "valid": true
+        },
+        {
+          "execution_id": "96cbe954-9e4f-4393-87be-575eccf04aa3",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 10,
+          "total": 10,
+          "duration_seconds": 36.0,
+          "valid": true
+        },
+        {
+          "execution_id": "d336f54a-fef5-4b9f-875a-de6c0b2816b4",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 10,
+          "total": 10,
+          "duration_seconds": 41.32,
           "valid": true
         }
       ]
@@ -809,6 +851,48 @@
       ]
     },
     {
+      "task_id": "pytest-dev__pytest-10356",
+      "task_version": "1.0.0",
+      "title": "按方法解析顺序继承测试标记",
+      "repo": "pytest-dev/pytest",
+      "difficulty": "挑战",
+      "base_commit": "3c1534944cbd34e8a41bc9e76818018fadefc9a1",
+      "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-10356@sha256:363458d4698f5d985f6476d189d3f1cf902253cd9518705fd395516cd30138da",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "c560eee94522a179a98acfe74b878328041d96af853d5d6af4374df6b6b28193",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T10:26:15.838452+00:00",
+      "runs": [
+        {
+          "execution_id": "bed8eb5b-a868-459d-84c8-cfb2fc222afd",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 79,
+          "total": 80,
+          "duration_seconds": 30.66,
+          "valid": true
+        },
+        {
+          "execution_id": "27ddb7b8-1aef-4eaa-8a25-1ff25cc9e66e",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 80,
+          "total": 80,
+          "duration_seconds": 30.13,
+          "valid": true
+        },
+        {
+          "execution_id": "c9fbf31a-043a-46ad-a98d-5df63939f66d",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 80,
+          "total": 80,
+          "duration_seconds": 29.9,
+          "valid": true
+        }
+      ]
+    },
+    {
       "task_id": "pytest-dev__pytest-5631",
       "task_version": "1.0.0",
       "title": "修复替换数组对象时的测试收集异常",
@@ -846,6 +930,48 @@
           "passed": 16,
           "total": 16,
           "duration_seconds": 18.03,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "pytest-dev__pytest-5787",
+      "task_version": "1.0.0",
+      "title": "在异常序列化中保留异常链",
+      "repo": "pytest-dev/pytest",
+      "difficulty": "挑战",
+      "base_commit": "955e54221008aba577ecbaefa15679f6777d3bf8",
+      "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-5787@sha256:48c6ca4406eb36dae43e08dc2137b750239b8ad8f9ccdf2924e8fc2177fca241",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "ac65a7e47383db23293c27e147f4401e311431152df07e40c3600fcd1a7d126a",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T10:31:58.061975+00:00",
+      "runs": [
+        {
+          "execution_id": "56d8d765-8374-45f1-abd2-e7415844742f",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 123,
+          "total": 125,
+          "duration_seconds": 30.99,
+          "valid": true
+        },
+        {
+          "execution_id": "25a0d025-84ba-46e5-9144-854bdd347556",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 125,
+          "total": 125,
+          "duration_seconds": 28.48,
+          "valid": true
+        },
+        {
+          "execution_id": "1b7b1113-5690-4005-8848-40a499894bf9",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 125,
+          "total": 125,
+          "duration_seconds": 27.22,
           "valid": true
         }
       ]
@@ -1145,6 +1271,48 @@
       ]
     },
     {
+      "task_id": "pytest-dev__pytest-7490",
+      "task_version": "1.0.0",
+      "title": "正确处理动态添加的 xfail 标记",
+      "repo": "pytest-dev/pytest",
+      "difficulty": "进阶",
+      "base_commit": "7f7a36478abe7dd1fa993b115d22606aa0e35e88",
+      "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-7490@sha256:9e10d2e75d41e6f6325949d19d6a8a033d1f5d5fd6d4ce53ad483eb8951a417f",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "4b405fd8692acd1e7a1aba56737ea45fc705ad8bf40e8f199decb6a95ebfe130",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T10:20:35.007039+00:00",
+      "runs": [
+        {
+          "execution_id": "8172f8d4-3b5d-4443-aadf-7b407dda2b83",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 78,
+          "total": 80,
+          "duration_seconds": 35.77,
+          "valid": true
+        },
+        {
+          "execution_id": "8df86de2-14e8-4a0f-ab8e-32fb4db7d204",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 80,
+          "total": 80,
+          "duration_seconds": 28.32,
+          "valid": true
+        },
+        {
+          "execution_id": "5fb87c66-0c3e-4d52-a480-1d3716ea48bf",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 80,
+          "total": 80,
+          "duration_seconds": 34.99,
+          "valid": true
+        }
+      ]
+    },
+    {
       "task_id": "pytest-dev__pytest-7571",
       "task_version": "1.0.0",
       "title": "在测试结束后恢复 caplog 日志级别",
@@ -1355,6 +1523,48 @@
       ]
     },
     {
+      "task_id": "sphinx-doc__sphinx-10673",
+      "task_version": "1.0.1",
+      "title": "正确处理目录中的特殊索引页面",
+      "repo": "sphinx-doc/sphinx",
+      "difficulty": "进阶",
+      "base_commit": "f35d2a6cc726f97d0e859ca7a0e1729f7da8a6c8",
+      "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-10673@sha256:4654890cc32945f5021445040ad6f2efd3b651f1c9efe679021d3b3da5375eb0",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "60230703129ded35fc55cf2a135efd825bfae088cc8166deb129f696dafd9098",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T10:18:49.601315+00:00",
+      "runs": [
+        {
+          "execution_id": "c6023845-5d80-4004-a1c1-035cc8f29e8a",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 9,
+          "total": 10,
+          "duration_seconds": 50.21,
+          "valid": true
+        },
+        {
+          "execution_id": "bdba96dc-15c2-441a-af1b-2ce58e5e8ac3",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 10,
+          "total": 10,
+          "duration_seconds": 47.29,
+          "valid": true
+        },
+        {
+          "execution_id": "402834db-fd58-4253-a7d6-cee046be8cc5",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 10,
+          "total": 10,
+          "duration_seconds": 40.66,
+          "valid": true
+        }
+      ]
+    },
+    {
       "task_id": "sphinx-doc__sphinx-11445",
       "task_version": "1.0.1",
       "title": "修复 rst_prolog 导致顶层标题丢失",
@@ -1434,6 +1644,48 @@
           "passed": 9,
           "total": 9,
           "duration_seconds": 26.18,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "sphinx-doc__sphinx-7440",
+      "task_version": "1.0.1",
+      "title": "识别术语表中大小写不同的重复词条",
+      "repo": "sphinx-doc/sphinx",
+      "difficulty": "入门",
+      "base_commit": "9bb204dcabe6ba0fc422bf4a45ad0c79c680d90b",
+      "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-7440@sha256:7c5c736aa232a1581a602993ff5c2483f9d2a9879fdf9a2518954262085fd6b4",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "df6a9dacbbb584155b0b7c18b187819616a8221b575a9725a5839726cfd9de8e",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T10:23:54.429740+00:00",
+      "runs": [
+        {
+          "execution_id": "b1d1fe63-93a2-4f69-87f5-85d2e632b0fd",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 12,
+          "total": 13,
+          "duration_seconds": 43.81,
+          "valid": true
+        },
+        {
+          "execution_id": "cc509374-82f2-4d71-95af-c8b7361d5ae1",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 13,
+          "total": 13,
+          "duration_seconds": 42.9,
+          "valid": true
+        },
+        {
+          "execution_id": "839f3786-61b5-4d3d-8820-bdf095cf6b05",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 13,
+          "total": 13,
+          "duration_seconds": 46.48,
           "valid": true
         }
       ]
@@ -1644,6 +1896,48 @@
           "passed": 4,
           "total": 4,
           "duration_seconds": 42.74,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "sphinx-doc__sphinx-9229",
+      "task_version": "1.0.1",
+      "title": "修复类型别名文档的不一致行为",
+      "repo": "sphinx-doc/sphinx",
+      "difficulty": "挑战",
+      "base_commit": "876fa81e0a038cda466925b85ccf6c5452e0f685",
+      "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9229@sha256:63840fa7b92aa018cc9d45344872ebb241951a44c05c41fa8e6a038c28ffb6b8",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "cfe0f7b97056d7e511082df5987a7f7e07534095cc0812b627fdc378e42ece89",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T10:30:24.697333+00:00",
+      "runs": [
+        {
+          "execution_id": "ee5b1ed0-fe2a-425f-874b-348c536c7d83",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 13,
+          "total": 14,
+          "duration_seconds": 48.89,
+          "valid": true
+        },
+        {
+          "execution_id": "7121cfbd-d646-4a93-b1f4-eb76143b706e",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 14,
+          "total": 14,
+          "duration_seconds": 41.99,
+          "valid": true
+        },
+        {
+          "execution_id": "2fe8bfc6-63e9-40af-a37b-393ec4521130",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 14,
+          "total": 14,
+          "duration_seconds": 45.85,
           "valid": true
         }
       ]

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "task_id": "sphinx-doc__sphinx-7440",
+  "task_version": "1.0.1",
+  "title": "识别术语表中大小写不同的重复词条",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "sphinx-doc/sphinx",
+  "base_commit": "9bb204dcabe6ba0fc422bf4a45ad0c79c680d90b",
+  "kind": "bugfix",
+  "difficulty": "入门",
+  "tags": [
+    "Python",
+    "Sphinx",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 25,
+  "allowed_paths": [
+    "sphinx/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "sphinx-doc__sphinx-7440",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-7440@sha256:7c5c736aa232a1581a602993ff5c2483f9d2a9879fdf9a2518954262085fd6b4",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_sphinx",
+  "fail_to_pass": [
+    "tests/test_domain_std.py::test_glossary"
+  ],
+  "pass_to_pass": [
+    "tests/test_domain_std.py::test_process_doc_handle_figure_caption",
+    "tests/test_domain_std.py::test_process_doc_handle_table_title",
+    "tests/test_domain_std.py::test_get_full_qualified_name",
+    "tests/test_domain_std.py::test_glossary_warning",
+    "tests/test_domain_std.py::test_glossary_comment",
+    "tests/test_domain_std.py::test_glossary_comment2",
+    "tests/test_domain_std.py::test_glossary_sorted",
+    "tests/test_domain_std.py::test_glossary_alphanumeric",
+    "tests/test_domain_std.py::test_glossary_conflicted_labels",
+    "tests/test_domain_std.py::test_cmdoption",
+    "tests/test_domain_std.py::test_multiple_cmdoptions",
+    "tests/test_domain_std.py::test_disabled_docref"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "sphinx/domains/std.py",
+      "tests/test_domain_std.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/sphinx-doc/sphinx.git sphinx-doc__sphinx-7440",
+      "cd sphinx-doc__sphinx-7440",
+      "git checkout -b spectrial-work 9bb204dcabe6ba0fc422bf4a45ad0c79c680d90b"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "f1fd2adbe523a3931e8fd14454ccbd58bee0c5f91fe1ed6dc358f747c7a5b47d",
+    "eval.sh": "9bdcf438693b7d9fa84acdb948a56bd4064bd4539fe6707955ebae33f392e898",
+    "test.patch": "6dbf83d82b931d827fc87f0263cb08ff6b22aff7afb7591e5f32b3bf09f81be1",
+    "repo-license.txt": "5004de7c0e86d9f3b7fa059807719c62b06ee5a30b8358081433f28c3b9ac9c9",
+    "upstream-eval.sh": "4138cbab39b3a61a3fb37af7c9957f5af23047974fadcd94599d3bb4ffaef0f0"
+  }
+}
