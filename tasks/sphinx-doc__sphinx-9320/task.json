@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "task_id": "sphinx-doc__sphinx-9320",
+  "task_version": "1.0.1",
+  "title": "修复快速建站遇到已有配置时无法退出",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "sphinx-doc/sphinx",
+  "base_commit": "e05cef574b8f23ab1b57f57e7da6dee509a4e230",
+  "kind": "bugfix",
+  "difficulty": "入门",
+  "tags": [
+    "Python",
+    "Sphinx",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 25,
+  "allowed_paths": [
+    "sphinx/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "sphinx-doc__sphinx-9320",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9320@sha256:0dd7b74de29c5734fbcd2fb9ab5295f610b5b281bd2fdd87e9c3c1d3f272f28a",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_sphinx",
+  "fail_to_pass": [
+    "tests/test_quickstart.py::test_exits_when_existing_confpy"
+  ],
+  "pass_to_pass": [
+    "tests/test_quickstart.py::test_do_prompt",
+    "tests/test_quickstart.py::test_do_prompt_inputstrip",
+    "tests/test_quickstart.py::test_do_prompt_with_nonascii",
+    "tests/test_quickstart.py::test_quickstart_defaults",
+    "tests/test_quickstart.py::test_quickstart_all_answers",
+    "tests/test_quickstart.py::test_generated_files_eol",
+    "tests/test_quickstart.py::test_quickstart_and_build",
+    "tests/test_quickstart.py::test_default_filename",
+    "tests/test_quickstart.py::test_extensions"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "sphinx/cmd/quickstart.py",
+      "tests/test_quickstart.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/sphinx-doc/sphinx.git sphinx-doc__sphinx-9320",
+      "cd sphinx-doc__sphinx-9320",
+      "git checkout -b spectrial-work e05cef574b8f23ab1b57f57e7da6dee509a4e230"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "8af37151ac1633dc5eebc5230c366cf7cd016f53fd3b3c190c9547196840f4ac",
+    "eval.sh": "91fc4e2eb513e4e656c4c261c481b0588256a11f221094d3f9967a8823628c97",
+    "test.patch": "109febd67a7274658f8dc827b142d94fa4e68fe5d8edccc62342dcb1309b9cbd",
+    "repo-license.txt": "058abe6d05d2fd185ed5cbc89d473a4722e43131582c93a040f78c4581f32943",
+    "upstream-eval.sh": "f13f2517ac97d1b567395640da3dc6cbe5fa420d02459ac025fffa3676f8f0fc"
+  }
+}

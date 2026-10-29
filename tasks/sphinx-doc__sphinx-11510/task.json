@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "task_id": "sphinx-doc__sphinx-11510",
+  "task_version": "1.0.1",
+  "title": "让 source-read 事件修改包含文件内容",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "sphinx-doc/sphinx",
+  "base_commit": "6cb783c0024a873722952a67ebb9f41771c8eb6d",
+  "kind": "bugfix",
+  "difficulty": "挑战",
+  "tags": [
+    "Python",
+    "Sphinx",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 120,
+  "allowed_paths": [
+    "sphinx/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "sphinx-doc__sphinx-11510",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-11510@sha256:01bf15e77e5d0f6988c8107bf81a5091900228ca0d160bf677d9b07dd17e1a0f",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_sphinx",
+  "fail_to_pass": [
+    "tests/test_directive_other.py::test_include_source_read_event",
+    "tests/test_directive_other.py::test_include_source_read_event_nested_includes"
+  ],
+  "pass_to_pass": [
+    "tests/test_directive_other.py::test_toctree",
+    "tests/test_directive_other.py::test_relative_toctree",
+    "tests/test_directive_other.py::test_toctree_urls_and_titles",
+    "tests/test_directive_other.py::test_toctree_glob",
+    "tests/test_directive_other.py::test_toctree_glob_and_url",
+    "tests/test_directive_other.py::test_reversed_toctree",
+    "tests/test_directive_other.py::test_toctree_twice"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "sphinx/directives/other.py",
+      "tests/roots/test-directive-include/baz/baz.rst"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/sphinx-doc/sphinx.git sphinx-doc__sphinx-11510",
+      "cd sphinx-doc__sphinx-11510",
+      "git checkout -b spectrial-work 6cb783c0024a873722952a67ebb9f41771c8eb6d"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "dcba37abe7056484dce01a0b6888d9570ec464242c2c53fbc5ad6e5513e713a7",
+    "eval.sh": "212dcc9b69c9d6b2608a83437501bbf56002993720b78c595b521a229f0ea965",
+    "test.patch": "0d9c5b5e39024ed66a1bb1d6edc192379c40d1100a762594823afd16e85b7edc",
+    "repo-license.txt": "ff1bda7a7df4aea4723ccf02f678f0724c831a32cadf779b9fb4f12110d5bebb",
+    "upstream-eval.sh": "7ca6dd4ef5edf58179a5c399ff2e21622cbe8cde859152ecb5be0402818d4e22"
+  }
+}

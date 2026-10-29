@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "task_id": "django__django-15851",
+  "task_version": "1.0.0",
+  "title": "修正 PostgreSQL dbshell 的参数顺序",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "django/django",
+  "base_commit": "b4817d20b9e55df30be0b1b2ca8c8bb6d61aab07",
+  "kind": "bugfix",
+  "difficulty": "入门",
+  "tags": [
+    "Python",
+    "Django",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 25,
+  "allowed_paths": [
+    "django/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "django__django-15851",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.django_1776_django-15851@sha256:aa80884e053cf1a238df7c4ceec43e4e07929547f658278bd3c3154f0ef8bc90",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_django",
+  "fail_to_pass": [
+    "test_parameters (dbshell.test_postgresql.PostgreSqlDbshellCommandTestCase)"
+  ],
+  "pass_to_pass": [
+    "test_accent (dbshell.test_postgresql.PostgreSqlDbshellCommandTestCase)",
+    "test_basic (dbshell.test_postgresql.PostgreSqlDbshellCommandTestCase)",
+    "test_column (dbshell.test_postgresql.PostgreSqlDbshellCommandTestCase)",
+    "test_crash_password_does_not_leak (dbshell.test_postgresql.PostgreSqlDbshellCommandTestCase)",
+    "test_nopass (dbshell.test_postgresql.PostgreSqlDbshellCommandTestCase)",
+    "test_passfile (dbshell.test_postgresql.PostgreSqlDbshellCommandTestCase)",
+    "test_service (dbshell.test_postgresql.PostgreSqlDbshellCommandTestCase)",
+    "test_ssl_certificate (dbshell.test_postgresql.PostgreSqlDbshellCommandTestCase)"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "django/db/backends/postgresql/client.py",
+      "tests/dbshell/test_postgresql.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/django/django.git django__django-15851",
+      "cd django__django-15851",
+      "git checkout -b spectrial-work b4817d20b9e55df30be0b1b2ca8c8bb6d61aab07"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "f4d50fcd56c36967abc5518f3cf22d8f7cdec73d9ee380ead21efd6c4e434526",
+    "eval.sh": "8ccff941b53343f699431de8bb44e7d173d0d7cc50c0dde610b80f21eacf5d9a",
+    "test.patch": "95470180dc5529e89656dd0394338e8ed4aeb0a48a5613c4522dc15abdfd1293",
+    "repo-license.txt": "b846415d1b514e9c1dff14a22deb906d794bc546ca6129f950a18cd091e2a669"
+  }
+}

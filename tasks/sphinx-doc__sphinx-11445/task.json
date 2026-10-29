@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "task_id": "sphinx-doc__sphinx-11445",
+  "task_version": "1.0.1",
+  "title": "修复 rst_prolog 导致顶层标题丢失",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "sphinx-doc/sphinx",
+  "base_commit": "71db08c05197545944949d5aa76cd340e7143627",
+  "kind": "bugfix",
+  "difficulty": "进阶",
+  "tags": [
+    "Python",
+    "Sphinx",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 55,
+  "allowed_paths": [
+    "sphinx/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "sphinx-doc__sphinx-11445",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-11445@sha256:fec58c84a7ccc38fdceb65528bfb6fb923f038cb1dc95de1f79c0a85e2dde4f2",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_sphinx",
+  "fail_to_pass": [
+    "tests/test_util_rst.py::test_prepend_prolog_with_roles_in_sections_with_newline",
+    "tests/test_util_rst.py::test_prepend_prolog_with_roles_in_sections_without_newline"
+  ],
+  "pass_to_pass": [
+    "tests/test_util_rst.py::test_escape",
+    "tests/test_util_rst.py::test_append_epilog",
+    "tests/test_util_rst.py::test_prepend_prolog",
+    "tests/test_util_rst.py::test_prepend_prolog_with_CR",
+    "tests/test_util_rst.py::test_prepend_prolog_without_CR",
+    "tests/test_util_rst.py::test_prepend_prolog_with_roles_in_sections",
+    "tests/test_util_rst.py::test_textwidth",
+    "tests/test_util_rst.py::test_heading"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "sphinx/util/rst.py",
+      "tests/test_util_rst.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/sphinx-doc/sphinx.git sphinx-doc__sphinx-11445",
+      "cd sphinx-doc__sphinx-11445",
+      "git checkout -b spectrial-work 71db08c05197545944949d5aa76cd340e7143627"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "e6b4919bdff39e0da713ee42eab3d71e8a2b99f4afb01f790bd58c70551981d5",
+    "eval.sh": "c49fb1db3a21c4c52c2e69c3ba2e27a2c9fba82f0d1958757d9d001bd2ef8714",
+    "test.patch": "b8eeaa101b3c97e7a51666947c4456dafbbed133efb186d5f2550f5e48d53cf4",
+    "repo-license.txt": "ff1bda7a7df4aea4723ccf02f678f0724c831a32cadf779b9fb4f12110d5bebb",
+    "upstream-eval.sh": "243515b6f5a731cea70870f0bc6e514d8d5204ab0b526d1785d4719266da53fc"
+  }
+}

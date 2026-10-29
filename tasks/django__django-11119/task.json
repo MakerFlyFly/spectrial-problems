@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "task_id": "django__django-11119",
+  "task_version": "1.0.0",
+  "title": "让模板字符串渲染遵循自动转义设置",
+  "summary": "围绕模板中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "django/django",
+  "base_commit": "d4df5e1b0b1c643fe0fc521add0236764ec8e92a",
+  "kind": "bugfix",
+  "difficulty": "入门",
+  "tags": [
+    "Python",
+    "Django",
+    "模板"
+  ],
+  "estimated_minutes": 25,
+  "allowed_paths": [
+    "django/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "django__django-11119",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.django_1776_django-11119@sha256:19e88bd69fb66bbf1b1ee7502c185fd074726eebf384f4c5334135acc9a297f3",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_django",
+  "fail_to_pass": [
+    "test_autoescape_off (template_tests.test_engine.RenderToStringTest)"
+  ],
+  "pass_to_pass": [
+    "test_cached_loader_priority (template_tests.test_engine.LoaderTests)",
+    "test_loader_priority (template_tests.test_engine.LoaderTests)",
+    "test_origin (template_tests.test_engine.LoaderTests)",
+    "test_basic_context (template_tests.test_engine.RenderToStringTest)",
+    "test_multiple_engines_configured (template_tests.test_engine.GetDefaultTests)",
+    "test_no_engines_configured (template_tests.test_engine.GetDefaultTests)",
+    "test_single_engine_configured (template_tests.test_engine.GetDefaultTests)"
+  ],
+  "guide": {
+    "overview": "围绕模板中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "django/template/engine.py",
+      "tests/template_tests/test_engine.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/django/django.git django__django-11119",
+      "cd django__django-11119",
+      "git checkout -b spectrial-work d4df5e1b0b1c643fe0fc521add0236764ec8e92a"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "264fad964e8d5a49cd04509eb503175aed31535e29c9262cb9eee4b251192728",
+    "eval.sh": "f521afeacf37d6e8d85c74ec1613c92118bef5b4be080d46faae09a392f7bd1f",
+    "test.patch": "993367ecb5d9177654f6540fc4c0018277b7038bad619528bc1429a75b5680e8",
+    "repo-license.txt": "b846415d1b514e9c1dff14a22deb906d794bc546ca6129f950a18cd091e2a669"
+  }
+}

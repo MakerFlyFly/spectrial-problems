@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "task_id": "django__django-12155",
+  "task_version": "1.0.0",
+  "title": "修复视图文档字符串的渲染错误",
+  "summary": "围绕管理后台中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "django/django",
+  "base_commit": "e8fcdaad5c428878d0a5d6ba820d957013f75595",
+  "kind": "bugfix",
+  "difficulty": "进阶",
+  "tags": [
+    "Python",
+    "Django",
+    "管理后台"
+  ],
+  "estimated_minutes": 55,
+  "allowed_paths": [
+    "django/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "django__django-12155",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.django_1776_django-12155@sha256:e039b37f460b99a0cf541ea6759ac5a31e94ce9959d3755d99775792421e44dc",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_django",
+  "fail_to_pass": [
+    "test_parse_rst_with_docstring_no_leading_line_feed (admin_docs.test_utils.TestUtils)"
+  ],
+  "pass_to_pass": [
+    "test_description_output (admin_docs.test_utils.TestUtils)",
+    "test_initial_header_level (admin_docs.test_utils.TestUtils)",
+    "test_parse_docstring (admin_docs.test_utils.TestUtils)",
+    "test_parse_rst (admin_docs.test_utils.TestUtils)",
+    "test_publish_parts (admin_docs.test_utils.TestUtils)",
+    "test_title_output (admin_docs.test_utils.TestUtils)"
+  ],
+  "guide": {
+    "overview": "围绕管理后台中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "django/contrib/admindocs/utils.py",
+      "django/contrib/admindocs/views.py",
+      "tests/admin_docs/test_utils.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/django/django.git django__django-12155",
+      "cd django__django-12155",
+      "git checkout -b spectrial-work e8fcdaad5c428878d0a5d6ba820d957013f75595"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "9f32a4a285f49a0f7005c54b76bcfa9d413dcf203ccc4e6f03bdb5bd89f537a4",
+    "eval.sh": "10a41edb96b308dfc2a4ff26d233596067ea8f9271d27d94f2b9f388b04f3fb1",
+    "test.patch": "544dde367f892a84033a80d5a775198f533906bf89b4649b25f1cdf7f27d7edd",
+    "repo-license.txt": "b846415d1b514e9c1dff14a22deb906d794bc546ca6129f950a18cd091e2a669"
+  }
+}

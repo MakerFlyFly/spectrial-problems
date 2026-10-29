@@ -1,5 +1,5 @@
 {
-  "release_ref": "v0.2.2",
+  "release_ref": "v0.2.3",
   "dataset_revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
   "limits": {
     "cpu": 2,
@@ -48,6 +48,48 @@
           "passed": 4,
           "total": 4,
           "duration_seconds": 82.77,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "django__django-11119",
+      "task_version": "1.0.0",
+      "title": "让模板字符串渲染遵循自动转义设置",
+      "repo": "django/django",
+      "difficulty": "入门",
+      "base_commit": "d4df5e1b0b1c643fe0fc521add0236764ec8e92a",
+      "image": "swebench/sweb.eval.x86_64.django_1776_django-11119@sha256:19e88bd69fb66bbf1b1ee7502c185fd074726eebf384f4c5334135acc9a297f3",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "bdefbfda46e1c15040791964daa1cbc9e732c512b933fcd0bd028829adbe02ce",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T10:05:32.228553+00:00",
+      "runs": [
+        {
+          "execution_id": "b493759d-f20c-47a9-bf52-549c58a400a3",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 7,
+          "total": 8,
+          "duration_seconds": 93.28,
+          "valid": true
+        },
+        {
+          "execution_id": "986702ce-424f-4f91-ab57-a94bc33df860",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 8,
+          "total": 8,
+          "duration_seconds": 79.77,
+          "valid": true
+        },
+        {
+          "execution_id": "fca9505c-abdb-4987-a741-edf29e54a41e",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 8,
+          "total": 8,
+          "duration_seconds": 82.01,
           "valid": true
         }
       ]
@@ -137,6 +179,48 @@
       ]
     },
     {
+      "task_id": "django__django-12155",
+      "task_version": "1.0.0",
+      "title": "修复视图文档字符串的渲染错误",
+      "repo": "django/django",
+      "difficulty": "进阶",
+      "base_commit": "e8fcdaad5c428878d0a5d6ba820d957013f75595",
+      "image": "swebench/sweb.eval.x86_64.django_1776_django-12155@sha256:e039b37f460b99a0cf541ea6759ac5a31e94ce9959d3755d99775792421e44dc",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "70e7159b6a49ceb5a47f126d84a3cbf7f204762555b4bef5e803e9cfdabf232d",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T09:50:02.648105+00:00",
+      "runs": [
+        {
+          "execution_id": "633a4506-d02b-42e1-b6dd-071eb6d97ff7",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 6,
+          "total": 7,
+          "duration_seconds": 100.79,
+          "valid": true
+        },
+        {
+          "execution_id": "892797ee-f7e4-4d62-96d6-e694eb35c974",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 7,
+          "total": 7,
+          "duration_seconds": 86.41,
+          "valid": true
+        },
+        {
+          "execution_id": "ed59f454-a6fd-41e0-a8af-464bc8145d83",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 7,
+          "total": 7,
+          "duration_seconds": 79.37,
+          "valid": true
+        }
+      ]
+    },
+    {
       "task_id": "django__django-15127",
       "task_version": "1.0.0",
       "title": "让消息级别标签随配置覆盖更新",
@@ -174,6 +258,48 @@
           "passed": 2,
           "total": 2,
           "duration_seconds": 35.93,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "django__django-15851",
+      "task_version": "1.0.0",
+      "title": "修正 PostgreSQL dbshell 的参数顺序",
+      "repo": "django/django",
+      "difficulty": "入门",
+      "base_commit": "b4817d20b9e55df30be0b1b2ca8c8bb6d61aab07",
+      "image": "swebench/sweb.eval.x86_64.django_1776_django-15851@sha256:aa80884e053cf1a238df7c4ceec43e4e07929547f658278bd3c3154f0ef8bc90",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "4cf3bad6241abee1424d35a39ba65f429261f0cc9beffad9a5f8740832ef2d85",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T10:12:25.097143+00:00",
+      "runs": [
+        {
+          "execution_id": "a09d8d33-ff5d-40f8-8d67-16589f0a201d",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 8,
+          "total": 9,
+          "duration_seconds": 37.41,
+          "valid": true
+        },
+        {
+          "execution_id": "c7d9fa63-8b6e-4dcd-a1e2-cbdb2fc038c9",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 9,
+          "total": 9,
+          "duration_seconds": 35.74,
+          "valid": true
+        },
+        {
+          "execution_id": "eedb5080-f26b-44af-b02a-3e2b450f04f3",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 9,
+          "total": 9,
+          "duration_seconds": 34.99,
           "valid": true
         }
       ]
@@ -641,6 +767,48 @@
       ]
     },
     {
+      "task_id": "pytest-dev__pytest-10081",
+      "task_version": "1.0.0",
+      "title": "修复跳过 unittest 类时的调试清理流程",
+      "repo": "pytest-dev/pytest",
+      "difficulty": "入门",
+      "base_commit": "da9a2b584eb7a6c7e924b2621ed0ddaeca0a7bea",
+      "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-10081@sha256:58951c0d236ade36cd508d48e87819c488ed28c60abda963f8d4df99d89c030c",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "c10b15d880f03df91d9501365ff097abfa58fce0b166bbe579daaa9425e65521",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T09:45:21.257928+00:00",
+      "runs": [
+        {
+          "execution_id": "429dddc1-e42b-4b51-9d37-7e66ddac4cfd",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 63,
+          "total": 64,
+          "duration_seconds": 33.33,
+          "valid": true
+        },
+        {
+          "execution_id": "476380ac-f360-4656-9c01-f84ea461ba89",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 64,
+          "total": 64,
+          "duration_seconds": 29.77,
+          "valid": true
+        },
+        {
+          "execution_id": "1f6916fe-aee1-4043-8a84-b376b9298d99",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 64,
+          "total": 64,
+          "duration_seconds": 32.11,
+          "valid": true
+        }
+      ]
+    },
+    {
       "task_id": "pytest-dev__pytest-5631",
       "task_version": "1.0.0",
       "title": "修复替换数组对象时的测试收集异常",
@@ -762,6 +930,48 @@
           "passed": 53,
           "total": 53,
           "duration_seconds": 23.03,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "pytest-dev__pytest-6202",
+      "task_version": "1.0.0",
+      "title": "保留测试报告标题中的参数表示",
+      "repo": "pytest-dev/pytest",
+      "difficulty": "入门",
+      "base_commit": "3a668ea6ff24b0c8f00498c3144c63bac561d925",
+      "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-6202@sha256:d2d9f0bf1ed8a5f50799291be86144768c3f7ad9400482d6dab7f05830f3e226",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "c499b857afde6a08ff294489ef5f49b096743792998d505df737ecdb76f27341",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T09:53:34.830517+00:00",
+      "runs": [
+        {
+          "execution_id": "4d86c7f5-a301-4b3a-a32d-ddc1bfc02608",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 72,
+          "total": 73,
+          "duration_seconds": 34.75,
+          "valid": true
+        },
+        {
+          "execution_id": "981ad950-9ef9-4b26-b580-a5401892f1e4",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 73,
+          "total": 73,
+          "duration_seconds": 36.09,
+          "valid": true
+        },
+        {
+          "execution_id": "f3507e6c-87f0-46e8-b106-97fcfcc3d44d",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 73,
+          "total": 73,
+          "duration_seconds": 35.61,
           "valid": true
         }
       ]
@@ -893,6 +1103,48 @@
       ]
     },
     {
+      "task_id": "pytest-dev__pytest-7432",
+      "task_version": "1.0.0",
+      "title": "修复 runxfail 下跳过测试的位置报告",
+      "repo": "pytest-dev/pytest",
+      "difficulty": "入门",
+      "base_commit": "e6e300e729dd33956e5448d8be9a0b1540b4e53a",
+      "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-7432@sha256:5ec7065f9477542610ea5137247539d8f1c9762112803b0690d5ccb2e64d2f07",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "b62518e069c0752599e11a924fad2b9f2ea420ba1acb0a0da487cb2372615aeb",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T10:01:03.573588+00:00",
+      "runs": [
+        {
+          "execution_id": "0eb94ac8-6954-4b95-a003-21db6ae9f57c",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 77,
+          "total": 78,
+          "duration_seconds": 26.59,
+          "valid": true
+        },
+        {
+          "execution_id": "cb7c0f38-defb-42d0-88ef-0b4a4fccd33b",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 78,
+          "total": 78,
+          "duration_seconds": 33.57,
+          "valid": true
+        },
+        {
+          "execution_id": "ef93791c-4815-4d93-91bb-502ec0da912b",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 78,
+          "total": 78,
+          "duration_seconds": 30.67,
+          "valid": true
+        }
+      ]
+    },
+    {
       "task_id": "pytest-dev__pytest-7571",
       "task_version": "1.0.0",
       "title": "在测试结束后恢复 caplog 日志级别",
@@ -930,6 +1182,48 @@
           "passed": 15,
           "total": 15,
           "duration_seconds": 17.15,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "pytest-dev__pytest-7982",
+      "task_version": "1.0.0",
+      "title": "恢复符号链接目录中的测试收集",
+      "repo": "pytest-dev/pytest",
+      "difficulty": "入门",
+      "base_commit": "a7e38c5c61928033a2dc1915cbee8caa8544a4d0",
+      "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-7982@sha256:1b6cd660102de29c36d28954eb2f6158b93d11b855a9bbfc577a55eb67a8f375",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "d21ceaf9376de3e3e2d3a0b4fef52ca495b01ffd64b226a76e9a9d8745b682c9",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T10:09:29.307050+00:00",
+      "runs": [
+        {
+          "execution_id": "df9a89b7-2198-4c4b-8186-176bbf240dec",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 78,
+          "total": 79,
+          "duration_seconds": 34.34,
+          "valid": true
+        },
+        {
+          "execution_id": "a9544901-9353-4644-b9b7-d94a99d2cf36",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 79,
+          "total": 79,
+          "duration_seconds": 28.13,
+          "valid": true
+        },
+        {
+          "execution_id": "66bef02a-01e8-4b30-8b29-249f6958e97c",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 79,
+          "total": 79,
+          "duration_seconds": 31.51,
           "valid": true
         }
       ]
@@ -1056,6 +1350,90 @@
           "passed": 6,
           "total": 6,
           "duration_seconds": 43.73,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "sphinx-doc__sphinx-11445",
+      "task_version": "1.0.1",
+      "title": "修复 rst_prolog 导致顶层标题丢失",
+      "repo": "sphinx-doc/sphinx",
+      "difficulty": "进阶",
+      "base_commit": "71db08c05197545944949d5aa76cd340e7143627",
+      "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-11445@sha256:fec58c84a7ccc38fdceb65528bfb6fb923f038cb1dc95de1f79c0a85e2dde4f2",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "4525d033f53336b48c26b39826c2d8452f6cf094841a2febec2092e12e3f402e",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T10:07:50.871444+00:00",
+      "runs": [
+        {
+          "execution_id": "404fb962-2b46-4e74-bce1-ad2a19f263c2",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 8,
+          "total": 10,
+          "duration_seconds": 27.67,
+          "valid": true
+        },
+        {
+          "execution_id": "f5b113b1-cf39-4434-a8ff-02fbe53309f4",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 10,
+          "total": 10,
+          "duration_seconds": 28.9,
+          "valid": true
+        },
+        {
+          "execution_id": "80365552-1caa-455f-ac97-cf9318401be4",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 10,
+          "total": 10,
+          "duration_seconds": 25.22,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "sphinx-doc__sphinx-11510",
+      "task_version": "1.0.1",
+      "title": "让 source-read 事件修改包含文件内容",
+      "repo": "sphinx-doc/sphinx",
+      "difficulty": "挑战",
+      "base_commit": "6cb783c0024a873722952a67ebb9f41771c8eb6d",
+      "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-11510@sha256:01bf15e77e5d0f6988c8107bf81a5091900228ca0d160bf677d9b07dd17e1a0f",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "bc819a787b5132ce47161afb22af1232c43ec1d6c40bf254121c24d9af88d2bf",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T09:51:44.348323+00:00",
+      "runs": [
+        {
+          "execution_id": "740c2c04-ec39-4b09-af0f-434078c3f278",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 7,
+          "total": 9,
+          "duration_seconds": 30.27,
+          "valid": true
+        },
+        {
+          "execution_id": "35e9b1be-e695-4e08-a9ae-424372f9cd3d",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 9,
+          "total": 9,
+          "duration_seconds": 28.05,
+          "valid": true
+        },
+        {
+          "execution_id": "cd3f11ed-319b-44db-ab64-bfb29988cfef",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 9,
+          "total": 9,
+          "duration_seconds": 26.18,
           "valid": true
         }
       ]
@@ -1266,6 +1644,48 @@
           "passed": 4,
           "total": 4,
           "duration_seconds": 42.74,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "task_id": "sphinx-doc__sphinx-9320",
+      "task_version": "1.0.1",
+      "title": "修复快速建站遇到已有配置时无法退出",
+      "repo": "sphinx-doc/sphinx",
+      "difficulty": "入门",
+      "base_commit": "e05cef574b8f23ab1b57f57e7da6dee509a4e230",
+      "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9320@sha256:0dd7b74de29c5734fbcd2fb9ab5295f610b5b281bd2fdd87e9c3c1d3f272f28a",
+      "parser_version": "swebench-02e7a74-python-v2",
+      "package_sha256": "a92d43d62a8e9dfbbd65f8d66bd1307d519fa0bfe6a8518e392b8887418ae335",
+      "grader_sha256": "ce455e9b1c563fc26424893d7f69d5cbbe03b07fec6a8670086cbabbca3982ce",
+      "validated_at": "2026-10-29T09:58:52.080911+00:00",
+      "runs": [
+        {
+          "execution_id": "4e49c80a-6de5-4dac-af90-be75163dd9f8",
+          "kind": "baseline",
+          "verdict": "failed",
+          "passed": 9,
+          "total": 10,
+          "duration_seconds": 37.54,
+          "valid": true
+        },
+        {
+          "execution_id": "2429786d-11f7-435c-9576-babbaf61d2a1",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 10,
+          "total": 10,
+          "duration_seconds": 36.94,
+          "valid": true
+        },
+        {
+          "execution_id": "0ab55b0e-bc61-4a72-aab7-d29b81a52925",
+          "kind": "gold",
+          "verdict": "passed",
+          "passed": 10,
+          "total": 10,
+          "duration_seconds": 34.94,
           "valid": true
         }
       ]
