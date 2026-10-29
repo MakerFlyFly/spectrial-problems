@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "task_id": "pytest-dev__pytest-5840",
+  "task_version": "1.0.0",
+  "title": "修复 Windows 路径大小写导致的配置导入失败",
+  "summary": "围绕配置解析中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "pytest-dev/pytest",
+  "base_commit": "73c5b7f4b11a81e971f7d1bb18072e06a87060f4",
+  "kind": "bugfix",
+  "difficulty": "进阶",
+  "tags": [
+    "Python",
+    "Pytest",
+    "配置解析"
+  ],
+  "estimated_minutes": 55,
+  "allowed_paths": [
+    "src/_pytest/",
+    "_pytest/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "pytest-dev__pytest-5840",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-5840@sha256:21a4deef9114348ab02986927e057d6bc0caf46fceca06414493f91ce4c64283",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_pytest",
+  "fail_to_pass": [
+    "testing/test_conftest.py::test_setinitial_conftest_subdirs[test]",
+    "testing/test_conftest.py::test_setinitial_conftest_subdirs[tests]"
+  ],
+  "pass_to_pass": [
+    "testing/test_conftest.py::TestConftestValueAccessGlobal::test_basic_init[global]",
+    "testing/test_conftest.py::TestConftestValueAccessGlobal::test_immediate_initialiation_and_incremental_are_the_same[global]",
+    "testing/test_conftest.py::TestConftestValueAccessGlobal::test_value_access_not_existing[global]",
+    "testing/test_conftest.py::TestConftestValueAccessGlobal::test_value_access_by_path[global]",
+    "testing/test_conftest.py::TestConftestValueAccessGlobal::test_value_access_with_confmod[global]",
+    "testing/test_conftest.py::TestConftestValueAccessGlobal::test_basic_init[inpackage]",
+    "testing/test_conftest.py::TestConftestValueAccessGlobal::test_immediate_initialiation_and_incremental_are_the_same[inpackage]",
+    "testing/test_conftest.py::TestConftestValueAccessGlobal::test_value_access_not_existing[inpackage]",
+    "testing/test_conftest.py::TestConftestValueAccessGlobal::test_value_access_by_path[inpackage]",
+    "testing/test_conftest.py::TestConftestValueAccessGlobal::test_value_access_with_confmod[inpackage]",
+    "testing/test_conftest.py::test_conftest_in_nonpkg_with_init",
+    "testing/test_conftest.py::test_doubledash_considered",
+    "testing/test_conftest.py::test_issue151_load_all_conftests",
+    "testing/test_conftest.py::test_conftest_global_import",
+    "testing/test_conftest.py::test_conftestcutdir",
+    "testing/test_conftest.py::test_conftestcutdir_inplace_considered",
+    "testing/test_conftest.py::test_setinitial_conftest_subdirs[whatever]",
+    "testing/test_conftest.py::test_setinitial_conftest_subdirs[.dotdir]",
+    "testing/test_conftest.py::test_conftest_confcutdir",
+    "testing/test_conftest.py::test_conftest_symlink",
+    "testing/test_conftest.py::test_conftest_symlink_files",
+    "testing/test_conftest.py::test_conftest_uppercase",
+    "testing/test_conftest.py::test_no_conftest",
+    "testing/test_conftest.py::test_conftest_existing_resultlog",
+    "testing/test_conftest.py::test_conftest_existing_junitxml",
+    "testing/test_conftest.py::test_conftest_import_order",
+    "testing/test_conftest.py::test_fixture_dependency",
+    "testing/test_conftest.py::test_conftest_found_with_double_dash",
+    "testing/test_conftest.py::TestConftestVisibility::test_parsefactories_relative_node_ids[runner-..-3]",
+    "testing/test_conftest.py::TestConftestVisibility::test_parsefactories_relative_node_ids[package-..-3]",
+    "testing/test_conftest.py::TestConftestVisibility::test_parsefactories_relative_node_ids[swc-../..-3]",
+    "testing/test_conftest.py::TestConftestVisibility::test_parsefactories_relative_node_ids[snc-../..-3]",
+    "testing/test_conftest.py::TestConftestVisibility::test_parsefactories_relative_node_ids[runner-../package-3]",
+    "testing/test_conftest.py::TestConftestVisibility::test_parsefactories_relative_node_ids[package-.-3]",
+    "testing/test_conftest.py::TestConftestVisibility::test_parsefactories_relative_node_ids[swc-..-3]",
+    "testing/test_conftest.py::TestConftestVisibility::test_parsefactories_relative_node_ids[snc-..-3]",
+    "testing/test_conftest.py::TestConftestVisibility::test_parsefactories_relative_node_ids[runner-../package/swc-1]",
+    "testing/test_conftest.py::TestConftestVisibility::test_parsefactories_relative_node_ids[package-./swc-1]",
+    "testing/test_conftest.py::TestConftestVisibility::test_parsefactories_relative_node_ids[swc-.-1]",
+    "testing/test_conftest.py::TestConftestVisibility::test_parsefactories_relative_node_ids[snc-../swc-1]",
+    "testing/test_conftest.py::TestConftestVisibility::test_parsefactories_relative_node_ids[runner-../package/snc-1]",
+    "testing/test_conftest.py::TestConftestVisibility::test_parsefactories_relative_node_ids[package-./snc-1]",
+    "testing/test_conftest.py::TestConftestVisibility::test_parsefactories_relative_node_ids[swc-../snc-1]",
+    "testing/test_conftest.py::TestConftestVisibility::test_parsefactories_relative_node_ids[snc-.-1]",
+    "testing/test_conftest.py::test_search_conftest_up_to_inifile[.-2-0]",
+    "testing/test_conftest.py::test_search_conftest_up_to_inifile[src-1-1]",
+    "testing/test_conftest.py::test_search_conftest_up_to_inifile[None-1-1]",
+    "testing/test_conftest.py::test_issue1073_conftest_special_objects",
+    "testing/test_conftest.py::test_conftest_exception_handling",
+    "testing/test_conftest.py::test_hook_proxy",
+    "testing/test_conftest.py::test_required_option_help"
+  ],
+  "guide": {
+    "overview": "围绕配置解析中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "src/_pytest/config/__init__.py",
+      "src/_pytest/pathlib.py",
+      "testing/test_conftest.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/pytest-dev/pytest.git pytest-dev__pytest-5840",
+      "cd pytest-dev__pytest-5840",
+      "git checkout -b spectrial-work 73c5b7f4b11a81e971f7d1bb18072e06a87060f4"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "4b386b15269600f3aaf10e477f9a847538f0d19305812dbf030a5ac3d06e5de9",
+    "eval.sh": "37c8c6491bb11432c6b79d9d2d43336d208a8d1498003c67c405b8342356cb4a",
+    "test.patch": "f4974c373808cd5a9309b75e2eec2a9a6540fb3017f94a991bd23c9b6ffdbd1d",
+    "repo-license.txt": "4be38574daf05665b6194e4fd84c5ef6ce7c3a2810308a5222d5cdffc2d04d18"
+  }
+}

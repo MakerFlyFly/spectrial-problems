@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "task_id": "sphinx-doc__sphinx-10466",
+  "task_version": "1.0.1",
+  "title": "去除国际化消息的重复源位置",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "sphinx-doc/sphinx",
+  "base_commit": "cab2d93076d0cca7c53fac885f927dde3e2a5fec",
+  "kind": "bugfix",
+  "difficulty": "进阶",
+  "tags": [
+    "Python",
+    "Sphinx",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 55,
+  "allowed_paths": [
+    "sphinx/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "sphinx-doc__sphinx-10466",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-10466@sha256:c02edca2a92a3353e0780dcd1b1a3ba2349245d7aa4e5fc6bc8f2a5327691452",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_sphinx",
+  "fail_to_pass": [
+    "tests/test_build_gettext.py::test_Catalog_duplicated_message"
+  ],
+  "pass_to_pass": [
+    "tests/test_build_gettext.py::test_build_gettext",
+    "tests/test_build_gettext.py::test_gettext_index_entries",
+    "tests/test_build_gettext.py::test_gettext_disable_index_entries",
+    "tests/test_build_gettext.py::test_gettext_template",
+    "tests/test_build_gettext.py::test_gettext_template_msgid_order_in_sphinxpot",
+    "tests/test_build_gettext.py::test_build_single_pot"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "sphinx/builders/gettext.py",
+      "tests/test_build_gettext.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/sphinx-doc/sphinx.git sphinx-doc__sphinx-10466",
+      "cd sphinx-doc__sphinx-10466",
+      "git checkout -b spectrial-work cab2d93076d0cca7c53fac885f927dde3e2a5fec"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "e72a35e0d65bb65dab482da2e99f7db54b9804d89a0d11d20d1059424f777834",
+    "eval.sh": "911b08dce421d91cd1a21157873d01bb3c914f1e6ccf3b365dfa96ce0c0c4412",
+    "test.patch": "05c38dc62f1a886ce935d1d510c295967d75d0592133c3c9bdacb02914c00b13",
+    "repo-license.txt": "1e6eaa582fc96e43572795f447085aa8d5781ce6af0fc2676b3c2f1d2dda60d2",
+    "upstream-eval.sh": "a229e1c9dae4b453400bcead87628a0968adc76a81cea53ca42d2a1001281bb0"
+  }
+}

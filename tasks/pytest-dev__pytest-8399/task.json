@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "task_id": "pytest-dev__pytest-8399",
+  "task_version": "1.0.0",
+  "title": "保持 unittest 类级 fixture 的私有性",
+  "summary": "围绕测试生命周期中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "pytest-dev/pytest",
+  "base_commit": "6e7dc8bac831cd8cf7a53b08efa366bd84f0c0fe",
+  "kind": "bugfix",
+  "difficulty": "进阶",
+  "tags": [
+    "Python",
+    "Pytest",
+    "测试生命周期"
+  ],
+  "estimated_minutes": 55,
+  "allowed_paths": [
+    "src/_pytest/",
+    "_pytest/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "pytest-dev__pytest-8399",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-8399@sha256:1403b263348f1da02330634d688ebf8dd61fa69f2c301203c89551889946cb0d",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_pytest",
+  "fail_to_pass": [
+    "testing/test_unittest.py::test_fixtures_setup_setUpClass_issue8394"
+  ],
+  "pass_to_pass": [
+    "testing/test_unittest.py::test_simple_unittest",
+    "testing/test_unittest.py::test_runTest_method",
+    "testing/test_unittest.py::test_isclasscheck_issue53",
+    "testing/test_unittest.py::test_setup",
+    "testing/test_unittest.py::test_setUpModule",
+    "testing/test_unittest.py::test_setUpModule_failing_no_teardown",
+    "testing/test_unittest.py::test_new_instances",
+    "testing/test_unittest.py::test_function_item_obj_is_instance",
+    "testing/test_unittest.py::test_teardown",
+    "testing/test_unittest.py::test_teardown_issue1649",
+    "testing/test_unittest.py::test_unittest_skip_issue148",
+    "testing/test_unittest.py::test_method_and_teardown_failing_reporting",
+    "testing/test_unittest.py::test_setup_failure_is_shown",
+    "testing/test_unittest.py::test_setup_setUpClass",
+    "testing/test_unittest.py::test_setup_class",
+    "testing/test_unittest.py::test_testcase_adderrorandfailure_defers[Error]",
+    "testing/test_unittest.py::test_testcase_adderrorandfailure_defers[Failure]",
+    "testing/test_unittest.py::test_testcase_custom_exception_info[Error]",
+    "testing/test_unittest.py::test_testcase_custom_exception_info[Failure]",
+    "testing/test_unittest.py::test_testcase_totally_incompatible_exception_info",
+    "testing/test_unittest.py::test_module_level_pytestmark",
+    "testing/test_unittest.py::test_djangolike_testcase",
+    "testing/test_unittest.py::test_unittest_not_shown_in_traceback",
+    "testing/test_unittest.py::test_unorderable_types",
+    "testing/test_unittest.py::test_unittest_typerror_traceback",
+    "testing/test_unittest.py::test_unittest_expected_failure_for_failing_test_is_xfail[pytest]",
+    "testing/test_unittest.py::test_unittest_expected_failure_for_failing_test_is_xfail[unittest]",
+    "testing/test_unittest.py::test_unittest_expected_failure_for_passing_test_is_fail[pytest]",
+    "testing/test_unittest.py::test_unittest_expected_failure_for_passing_test_is_fail[unittest]",
+    "testing/test_unittest.py::test_unittest_setup_interaction[return]",
+    "testing/test_unittest.py::test_unittest_setup_interaction[yield]",
+    "testing/test_unittest.py::test_non_unittest_no_setupclass_support",
+    "testing/test_unittest.py::test_no_teardown_if_setupclass_failed",
+    "testing/test_unittest.py::test_cleanup_functions",
+    "testing/test_unittest.py::test_issue333_result_clearing",
+    "testing/test_unittest.py::test_unittest_raise_skip_issue748",
+    "testing/test_unittest.py::test_unittest_skip_issue1169",
+    "testing/test_unittest.py::test_class_method_containing_test_issue1558",
+    "testing/test_unittest.py::test_usefixtures_marker_on_unittest[builtins.object]",
+    "testing/test_unittest.py::test_usefixtures_marker_on_unittest[unittest.TestCase]",
+    "testing/test_unittest.py::test_testcase_handles_init_exceptions",
+    "testing/test_unittest.py::test_error_message_with_parametrized_fixtures",
+    "testing/test_unittest.py::test_setup_inheritance_skipping[test_setup_skip.py-1",
+    "testing/test_unittest.py::test_setup_inheritance_skipping[test_setup_skip_class.py-1",
+    "testing/test_unittest.py::test_setup_inheritance_skipping[test_setup_skip_module.py-1",
+    "testing/test_unittest.py::test_BdbQuit",
+    "testing/test_unittest.py::test_exit_outcome",
+    "testing/test_unittest.py::test_trace",
+    "testing/test_unittest.py::test_pdb_teardown_called",
+    "testing/test_unittest.py::test_pdb_teardown_skipped[@unittest.skip]",
+    "testing/test_unittest.py::test_pdb_teardown_skipped[@pytest.mark.skip]",
+    "testing/test_unittest.py::test_async_support",
+    "testing/test_unittest.py::test_do_class_cleanups_on_success",
+    "testing/test_unittest.py::test_do_class_cleanups_on_setupclass_failure",
+    "testing/test_unittest.py::test_do_class_cleanups_on_teardownclass_failure",
+    "testing/test_unittest.py::test_do_cleanups_on_success",
+    "testing/test_unittest.py::test_do_cleanups_on_setup_failure",
+    "testing/test_unittest.py::test_do_cleanups_on_teardown_failure",
+    "testing/test_unittest.py::test_plain_unittest_does_not_support_async"
+  ],
+  "guide": {
+    "overview": "围绕测试生命周期中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "src/_pytest/python.py",
+      "src/_pytest/unittest.py",
+      "testing/test_nose.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/pytest-dev/pytest.git pytest-dev__pytest-8399",
+      "cd pytest-dev__pytest-8399",
+      "git checkout -b spectrial-work 6e7dc8bac831cd8cf7a53b08efa366bd84f0c0fe"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "e386b5ec75b6f06d10d51548d3368e9a392d81f6ddc9b79b336d2224f733d551",
+    "eval.sh": "d5af93f981d23eb9fad3778d06ff124310197076d55c7c6a7d6f2f31e8acb091",
+    "test.patch": "506cca658cf270e5ef62256ea4261cd6557ed8368317a97d715123486fa1ddd6",
+    "repo-license.txt": "7898b9b164d4f93fd9a562fd0f592935518b48c4745303964110eb7f7fe64faf"
+  }
+}

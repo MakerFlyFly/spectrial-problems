@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "task_id": "sphinx-doc__sphinx-10614",
+  "task_version": "1.0.1",
+  "title": "修复继承关系图 SVG 中的链接",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "sphinx-doc/sphinx",
+  "base_commit": "ac2b7599d212af7d04649959ce6926c63c3133fa",
+  "kind": "bugfix",
+  "difficulty": "进阶",
+  "tags": [
+    "Python",
+    "Sphinx",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 55,
+  "allowed_paths": [
+    "sphinx/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "sphinx-doc__sphinx-10614",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-10614@sha256:455d642453b0c1ace5e25dd27f661d22c52a1d5d698b8344de1b5ebe40c077f8",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_sphinx",
+  "fail_to_pass": [
+    "tests/test_ext_inheritance_diagram.py::test_inheritance_diagram_svg_html"
+  ],
+  "pass_to_pass": [
+    "tests/test_ext_inheritance_diagram.py::test_inheritance_diagram",
+    "tests/test_ext_inheritance_diagram.py::test_inheritance_diagram_png_html",
+    "tests/test_ext_inheritance_diagram.py::test_inheritance_diagram_latex",
+    "tests/test_ext_inheritance_diagram.py::test_inheritance_diagram_latex_alias",
+    "tests/test_ext_inheritance_diagram.py::test_import_classes"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "sphinx/ext/inheritance_diagram.py",
+      "tests/roots/test-ext-inheritance_diagram/conf.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/sphinx-doc/sphinx.git sphinx-doc__sphinx-10614",
+      "cd sphinx-doc__sphinx-10614",
+      "git checkout -b spectrial-work ac2b7599d212af7d04649959ce6926c63c3133fa"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "a902dcf6ef0375d756b3a216f0baf538ead94e182d0ac16e6633573f3ae9a2d5",
+    "eval.sh": "1479655aa9f669aaf9365ea85dfc4fd8d93f77afb87d2d8e169d63fae4d32c6f",
+    "test.patch": "67701d18fdee1c802c86f12bafbedc42250bec185a6db83e06f5a9162ec8aa94",
+    "repo-license.txt": "ff1bda7a7df4aea4723ccf02f678f0724c831a32cadf779b9fb4f12110d5bebb",
+    "upstream-eval.sh": "ee4c5ff796b62e88ade11f76a36671193788585db7b67d3caae179407ea59835"
+  }
+}

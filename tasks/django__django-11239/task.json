@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "task_id": "django__django-11239",
+  "task_version": "1.0.0",
+  "title": "为 dbshell 支持 PostgreSQL 客户端证书",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "django/django",
+  "base_commit": "d87bd29c4f8dfcdf3f4a4eb8340e6770a2416fe3",
+  "kind": "feature",
+  "difficulty": "入门",
+  "tags": [
+    "Python",
+    "Django",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 25,
+  "allowed_paths": [
+    "django/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "django__django-11239",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.django_1776_django-11239@sha256:e260b7489ea9fe2c6d99f0a727badf69ff1d0fc44b4f45163f1bd7a997db2587",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_django",
+  "fail_to_pass": [
+    "test_ssl_certificate (dbshell.test_postgresql.PostgreSqlDbshellCommandTestCase)"
+  ],
+  "pass_to_pass": [
+    "test_accent (dbshell.test_postgresql.PostgreSqlDbshellCommandTestCase)",
+    "test_basic (dbshell.test_postgresql.PostgreSqlDbshellCommandTestCase)",
+    "test_column (dbshell.test_postgresql.PostgreSqlDbshellCommandTestCase)",
+    "test_nopass (dbshell.test_postgresql.PostgreSqlDbshellCommandTestCase)",
+    "SIGINT is ignored in Python and passed to psql to abort quries."
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "django/db/backends/postgresql/client.py",
+      "tests/dbshell/test_postgresql.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/django/django.git django__django-11239",
+      "cd django__django-11239",
+      "git checkout -b spectrial-work d87bd29c4f8dfcdf3f4a4eb8340e6770a2416fe3"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "4f06ccec412dfd622e67248f35d24c93d00bfb755849a39f958b4e806969b86f",
+    "eval.sh": "3016da0d19a5294bc38e3e535637d9b4a7670626e58d730ac1a6aa31d03ca81d",
+    "test.patch": "99f5e7e15b13abf93980fb369f04832441f4bcdbae06e1bb26682d955ade28ac",
+    "repo-license.txt": "b846415d1b514e9c1dff14a22deb906d794bc546ca6129f950a18cd091e2a669"
+  }
+}

@@ -6,13 +6,16 @@
 
 ## 题库
 
-当前 Release 包含 **23 道**已通过基线与两次参考补丁验证的题目。
+当前 Release 包含 **33 道**已通过基线与两次参考补丁验证的题目。
 
 | 题目 | 仓库 | 难度 | 固定测试 |
 | --- | --- | --- | --- |
 | [在正确数据库上重命名内容类型](tasks/django__django-11066/problem.md) | django/django | 入门 | 4 |
+| [为 dbshell 支持 PostgreSQL 客户端证书](tasks/django__django-11239/problem.md) | django/django | 入门 | 6 |
 | [避免重复构造 URL 解析器](tasks/django__django-11333/problem.md) | django/django | 进阶 | 3 |
 | [让消息级别标签随配置覆盖更新](tasks/django__django-15127/problem.md) | django/django | 入门 | 2 |
+| [让另存为新对象遵循新增权限](tasks/django__django-16527/problem.md) | django/django | 进阶 | 7 |
+| [修复多条件异或查询的奇偶语义](tasks/django__django-16901/problem.md) | django/django | 进阶 | 7 |
 | [让后台内联表单使用 UUID 默认值](tasks/django__django-16950/problem.md) | django/django | 进阶 | 4 |
 | [为 Blueprint 增加空名称校验](tasks/pallets__flask-5014/problem.md) | pallets/flask | 入门 | 60 |
 | [修复请求中不恰当的 Content-Length](tasks/psf__requests-1142/problem.md) | psf/requests | 入门 | 6 |
@@ -24,10 +27,17 @@
 | [修复日志清空后的状态不一致](tasks/pytest-dev__pytest-10051/problem.md) | pytest-dev/pytest | 进阶 | 16 |
 | [修复替换数组对象时的测试收集异常](tasks/pytest-dev__pytest-5631/problem.md) | pytest-dev/pytest | 进阶 | 16 |
 | [修复 pastebin 功能的语法高亮类型](tasks/pytest-dev__pytest-5809/problem.md) | pytest-dev/pytest | 入门 | 4 |
+| [修复 Windows 路径大小写导致的配置导入失败](tasks/pytest-dev__pytest-5840/problem.md) | pytest-dev/pytest | 进阶 | 53 |
 | [修复展示字节参数时的 BytesWarning](tasks/pytest-dev__pytest-7205/problem.md) | pytest-dev/pytest | 入门 | 26 |
 | [修复调试模式下跳过测试的清理流程](tasks/pytest-dev__pytest-7236/problem.md) | pytest-dev/pytest | 进阶 | 52 |
+| [修复调试版 Python 下的标记表达式崩溃](tasks/pytest-dev__pytest-7324/problem.md) | pytest-dev/pytest | 进阶 | 61 |
 | [在测试结束后恢复 caplog 日志级别](tasks/pytest-dev__pytest-7571/problem.md) | pytest-dev/pytest | 进阶 | 15 |
+| [保持 unittest 类级 fixture 的私有性](tasks/pytest-dev__pytest-8399/problem.md) | pytest-dev/pytest | 进阶 | 60 |
+| [去除国际化消息的重复源位置](tasks/sphinx-doc__sphinx-10466/problem.md) | sphinx-doc/sphinx | 进阶 | 7 |
+| [修复继承关系图 SVG 中的链接](tasks/sphinx-doc__sphinx-10614/problem.md) | sphinx-doc/sphinx | 进阶 | 6 |
+| [修复泛型类在自动文档模拟环境中的异常](tasks/sphinx-doc__sphinx-7889/problem.md) | sphinx-doc/sphinx | 入门 | 6 |
 | [支持为自动文档指定私有成员名单](tasks/sphinx-doc__sphinx-8035/problem.md) | sphinx-doc/sphinx | 进阶 | 3 |
+| [补全继承属性的自动文档](tasks/sphinx-doc__sphinx-8548/problem.md) | sphinx-doc/sphinx | 挑战 | 6 |
 | [修复变量的公开成员元数据识别](tasks/sphinx-doc__sphinx-8593/problem.md) | sphinx-doc/sphinx | 进阶 | 3 |
 | [禁用 EPUB 时不再生成源码查看页](tasks/sphinx-doc__sphinx-8721/problem.md) | sphinx-doc/sphinx | 入门 | 4 |
 | [支持向量与零的加法](tasks/sympy__sympy-14711/problem.md) | sympy/sympy | 入门 | 3 |

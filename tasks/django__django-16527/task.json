@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "task_id": "django__django-16527",
+  "task_version": "1.0.0",
+  "title": "让另存为新对象遵循新增权限",
+  "summary": "围绕模板中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "django/django",
+  "base_commit": "bd366ca2aeffa869b7dbc0b0aa01caea75e6dc31",
+  "kind": "bugfix",
+  "difficulty": "进阶",
+  "tags": [
+    "Python",
+    "Django",
+    "模板"
+  ],
+  "estimated_minutes": 55,
+  "allowed_paths": [
+    "django/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "django__django-16527",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.django_1776_django-16527@sha256:53bc8d6c86cf2387eeea115aa16f98840c22911c5e24eaa42a061ebeccd19331",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_django",
+  "fail_to_pass": [
+    "test_submit_row_save_as_new_add_permission_required (admin_views.test_templatetags.AdminTemplateTagsTest.test_submit_row_save_as_new_add_permission_required)"
+  ],
+  "pass_to_pass": [
+    "test_choice_links (admin_views.test_templatetags.DateHierarchyTests.test_choice_links)",
+    "test_choice_links_datetime (admin_views.test_templatetags.DateHierarchyTests.test_choice_links_datetime)",
+    "admin_modify template tags follow the standard search pattern",
+    "admin_list template tags follow the standard search pattern",
+    "test_override_show_save_and_add_another (admin_views.test_templatetags.AdminTemplateTagsTest.test_override_show_save_and_add_another)",
+    "submit_row template tag should pass whole context."
+  ],
+  "guide": {
+    "overview": "围绕模板中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "django/contrib/admin/templatetags/admin_modify.py",
+      "tests/admin_views/test_templatetags.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/django/django.git django__django-16527",
+      "cd django__django-16527",
+      "git checkout -b spectrial-work bd366ca2aeffa869b7dbc0b0aa01caea75e6dc31"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "d9bcb36c05a8542b01cc22ded3b6545b090ccac64f969ddee3981d62c6e74e10",
+    "eval.sh": "da415ce085d3d60430c8a3f71a584c219aef073c75c389aa26e51a38ff8d5fb9",
+    "test.patch": "f6a7281cfea2bd4556de316e62bac92bff2fa78c6ebbb20c1357b226fe197b43",
+    "repo-license.txt": "b846415d1b514e9c1dff14a22deb906d794bc546ca6129f950a18cd091e2a669"
+  }
+}

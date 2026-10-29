@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "task_id": "django__django-16901",
+  "task_version": "1.0.0",
+  "title": "修复多条件异或查询的奇偶语义",
+  "summary": "围绕ORM中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "django/django",
+  "base_commit": "ee36e101e8f8c0acde4bb148b738ab7034e902a0",
+  "kind": "bugfix",
+  "difficulty": "进阶",
+  "tags": [
+    "Python",
+    "Django",
+    "ORM"
+  ],
+  "estimated_minutes": 55,
+  "allowed_paths": [
+    "django/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "django__django-16901",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.django_1776_django-16901@sha256:30d056ba431e80d4434cf885a9e7711a78d27a5624e65e4580486d7a4bd93b25",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_django",
+  "fail_to_pass": [
+    "test_filter_multiple (xor_lookups.tests.XorLookupsTests.test_filter_multiple)"
+  ],
+  "pass_to_pass": [
+    "test_empty_in (xor_lookups.tests.XorLookupsTests.test_empty_in)",
+    "test_exclude (xor_lookups.tests.XorLookupsTests.test_exclude)",
+    "test_filter (xor_lookups.tests.XorLookupsTests.test_filter)",
+    "test_filter_negated (xor_lookups.tests.XorLookupsTests.test_filter_negated)",
+    "test_pk_q (xor_lookups.tests.XorLookupsTests.test_pk_q)",
+    "test_stages (xor_lookups.tests.XorLookupsTests.test_stages)"
+  ],
+  "guide": {
+    "overview": "围绕ORM中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "django/db/models/sql/where.py",
+      "tests/xor_lookups/tests.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/django/django.git django__django-16901",
+      "cd django__django-16901",
+      "git checkout -b spectrial-work ee36e101e8f8c0acde4bb148b738ab7034e902a0"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "c8993e991640f6009471290abeba79fbb302f7b82c293f7e9340fe4e1220f532",
+    "eval.sh": "da76dc02aec71d632786daf8774cec00c79510661bbc2cca5e5ae244a172fc19",
+    "test.patch": "de742bfe48dfe03bd1782dd32e7f564bf73f72a088f3d3a4ed677d48201fb587",
+    "repo-license.txt": "b846415d1b514e9c1dff14a22deb906d794bc546ca6129f950a18cd091e2a669"
+  }
+}

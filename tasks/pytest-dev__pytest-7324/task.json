@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "task_id": "pytest-dev__pytest-7324",
+  "task_version": "1.0.0",
+  "title": "修复调试版 Python 下的标记表达式崩溃",
+  "summary": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "pytest-dev/pytest",
+  "base_commit": "19ad5889353c7f5f2b65cc2acd346b7a9e95dfcd",
+  "kind": "bugfix",
+  "difficulty": "进阶",
+  "tags": [
+    "Python",
+    "Pytest",
+    "工程逻辑"
+  ],
+  "estimated_minutes": 55,
+  "allowed_paths": [
+    "src/_pytest/",
+    "_pytest/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "pytest-dev__pytest-7324",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-7324@sha256:bbdb6c6576dc1294ac789dd5ab3bed3ae231aec39c2d4f3d643bab76a4ef34ff",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_pytest",
+  "fail_to_pass": [
+    "testing/test_mark_expression.py::test_valid_idents[True]",
+    "testing/test_mark_expression.py::test_valid_idents[False]",
+    "testing/test_mark_expression.py::test_valid_idents[None]"
+  ],
+  "pass_to_pass": [
+    "testing/test_mark_expression.py::test_empty_is_false",
+    "testing/test_mark_expression.py::test_basic[true-True0]",
+    "testing/test_mark_expression.py::test_basic[true-True1]",
+    "testing/test_mark_expression.py::test_basic[false-False]",
+    "testing/test_mark_expression.py::test_basic[not",
+    "testing/test_mark_expression.py::test_basic[true",
+    "testing/test_mark_expression.py::test_basic[false",
+    "testing/test_mark_expression.py::test_basic[(not",
+    "testing/test_mark_expression.py::test_syntax_oddeties[",
+    "testing/test_mark_expression.py::test_syntax_oddeties[(",
+    "testing/test_mark_expression.py::test_syntax_oddeties[not",
+    "testing/test_mark_expression.py::test_syntax_errors[(-2-expected",
+    "testing/test_mark_expression.py::test_syntax_errors[",
+    "testing/test_mark_expression.py::test_syntax_errors[)-1-expected",
+    "testing/test_mark_expression.py::test_syntax_errors[)",
+    "testing/test_mark_expression.py::test_syntax_errors[not-4-expected",
+    "testing/test_mark_expression.py::test_syntax_errors[not",
+    "testing/test_mark_expression.py::test_syntax_errors[(not)-5-expected",
+    "testing/test_mark_expression.py::test_syntax_errors[and-1-expected",
+    "testing/test_mark_expression.py::test_syntax_errors[ident",
+    "testing/test_mark_expression.py::test_valid_idents[.]",
+    "testing/test_mark_expression.py::test_valid_idents[...]",
+    "testing/test_mark_expression.py::test_valid_idents[:::]",
+    "testing/test_mark_expression.py::test_valid_idents[a:::c]",
+    "testing/test_mark_expression.py::test_valid_idents[a+-b]",
+    "testing/test_mark_expression.py::test_valid_idents[\\u05d0\\u05d1\\u05d2\\u05d3]",
+    "testing/test_mark_expression.py::test_valid_idents[aa\\u05d0\\u05d1\\u05d2\\u05d3cc]",
+    "testing/test_mark_expression.py::test_valid_idents[a[bcd]]",
+    "testing/test_mark_expression.py::test_valid_idents[1234]",
+    "testing/test_mark_expression.py::test_valid_idents[1234abcd]",
+    "testing/test_mark_expression.py::test_valid_idents[1234and]",
+    "testing/test_mark_expression.py::test_valid_idents[notandor]",
+    "testing/test_mark_expression.py::test_valid_idents[not_and_or]",
+    "testing/test_mark_expression.py::test_valid_idents[not[and]or]",
+    "testing/test_mark_expression.py::test_valid_idents[1234+5678]",
+    "testing/test_mark_expression.py::test_valid_idents[123.232]",
+    "testing/test_mark_expression.py::test_valid_idents[if]",
+    "testing/test_mark_expression.py::test_valid_idents[else]",
+    "testing/test_mark_expression.py::test_valid_idents[while]",
+    "testing/test_mark_expression.py::test_invalid_idents[/]",
+    "testing/test_mark_expression.py::test_invalid_idents[\\\\]",
+    "testing/test_mark_expression.py::test_invalid_idents[^]",
+    "testing/test_mark_expression.py::test_invalid_idents[*]",
+    "testing/test_mark_expression.py::test_invalid_idents[=]",
+    "testing/test_mark_expression.py::test_invalid_idents[&]",
+    "testing/test_mark_expression.py::test_invalid_idents[%]",
+    "testing/test_mark_expression.py::test_invalid_idents[$]",
+    "testing/test_mark_expression.py::test_invalid_idents[#]",
+    "testing/test_mark_expression.py::test_invalid_idents[@]",
+    "testing/test_mark_expression.py::test_invalid_idents[!]",
+    "testing/test_mark_expression.py::test_invalid_idents[~]",
+    "testing/test_mark_expression.py::test_invalid_idents[{]",
+    "testing/test_mark_expression.py::test_invalid_idents[}]",
+    "testing/test_mark_expression.py::test_invalid_idents[\"]",
+    "testing/test_mark_expression.py::test_invalid_idents[']",
+    "testing/test_mark_expression.py::test_invalid_idents[|]",
+    "testing/test_mark_expression.py::test_invalid_idents[;]",
+    "testing/test_mark_expression.py::test_invalid_idents[\\u2190]"
+  ],
+  "guide": {
+    "overview": "围绕工程逻辑中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "src/_pytest/mark/expression.py",
+      "testing/test_mark_expression.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/pytest-dev/pytest.git pytest-dev__pytest-7324",
+      "cd pytest-dev__pytest-7324",
+      "git checkout -b spectrial-work 19ad5889353c7f5f2b65cc2acd346b7a9e95dfcd"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "cff01da91865168d70e84e97b1032e234a53094cd23fd48f3cc29e9fb86ac233",
+    "eval.sh": "b1c08defbf9042539c85fdc933a9a2fd099f675e146b5b13f3d6261f061d2056",
+    "test.patch": "75381f070c03d283a7cd948f1b6ac247e50d63554c6cce8955cd5191398fe2ab",
+    "repo-license.txt": "7898b9b164d4f93fd9a562fd0f592935518b48c4745303964110eb7f7fe64faf"
+  }
+}

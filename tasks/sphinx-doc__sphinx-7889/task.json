@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "task_id": "sphinx-doc__sphinx-7889",
+  "task_version": "1.0.1",
+  "title": "修复泛型类在自动文档模拟环境中的异常",
+  "summary": "围绕自动文档中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+  "repo": "sphinx-doc/sphinx",
+  "base_commit": "ec9af606c6cfa515f946d74da9b51574f2f9b16f",
+  "kind": "bugfix",
+  "difficulty": "入门",
+  "tags": [
+    "Python",
+    "Sphinx",
+    "自动文档"
+  ],
+  "estimated_minutes": 25,
+  "allowed_paths": [
+    "sphinx/"
+  ],
+  "source": {
+    "dataset": "SWE-bench/SWE-bench_Verified",
+    "revision": "78f471bf655a3137b2e8a75af1501690ec009ec3",
+    "instance_id": "sphinx-doc__sphinx-7889",
+    "url": "https://huggingface.co/datasets/SWE-bench/SWE-bench_Verified"
+  },
+  "environment": {
+    "image": "swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-7889@sha256:57a4cf422e77ed0fa7993c550ce5f7e36e40b455ca8842baa9974ae0b9aeeed3",
+    "platform": "linux/amd64",
+    "evaluator": "swebench-python-v2",
+    "parser_version": "swebench-02e7a74-python-v2"
+  },
+  "log_parser": "parse_log_sphinx",
+  "fail_to_pass": [
+    "tests/test_ext_autodoc_mock.py::test_MockObject"
+  ],
+  "pass_to_pass": [
+    "tests/test_ext_autodoc_mock.py::test_MockModule",
+    "tests/test_ext_autodoc_mock.py::test_mock",
+    "tests/test_ext_autodoc_mock.py::test_mock_does_not_follow_upper_modules",
+    "tests/test_ext_autodoc_mock.py::test_abc_MockObject",
+    "tests/test_ext_autodoc_mock.py::test_mock_decorator"
+  ],
+  "guide": {
+    "overview": "围绕自动文档中的实际问题，复现报告描述的行为，追踪代码调用关系，并使用固定测试检验修复。",
+    "entry_points": [
+      "sphinx/ext/autodoc/mock.py",
+      "tests/test_ext_autodoc_mock.py"
+    ],
+    "steps": [
+      "复现原始报告并确认预期行为。",
+      "从入口文件追踪相关调用与数据流。",
+      "在指定源目录实现修复，运行修复测试和回归测试。",
+      "导出相对固定基线的补丁并提交评测。"
+    ],
+    "setup": [
+      "git clone https://github.com/sphinx-doc/sphinx.git sphinx-doc__sphinx-7889",
+      "cd sphinx-doc__sphinx-7889",
+      "git checkout -b spectrial-work ec9af606c6cfa515f946d74da9b51574f2f9b16f"
+    ],
+    "local_test": "使用固定镜像，先应用 test.patch，再按 eval.sh 中的命令运行完整测试；也可使用 tools/reproduce.py 独立复现。"
+  },
+  "assets": {
+    "problem.md": "641f4843d652956a5dd9378a3808e4a3cc451c7426e52a4372c11ba59d4b5411",
+    "eval.sh": "d926cac6e85258a3398f7c2ec91f62bba7f4faed65e3246d19121c57f3a65631",
+    "test.patch": "9ab028f6205f70e8513d29a21f7eeb1c3187bc745c69399b4377c459ddefdc47",
+    "repo-license.txt": "f275b949f651f373e41cdd163ffa89b419497f89990e1a86753ac64a33829404",
+    "upstream-eval.sh": "2f03c812b236f9fb39ff56625267483c4c732008bd1660f0a56dfc2812bb51bb"
+  }
+}
